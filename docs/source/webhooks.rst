@@ -48,7 +48,7 @@ Network Relays
 
 Often a Vespene server on a private network will want to recieve webhooks from a hosted source control management service.
 
-There are commercial solutions for this (I have tested webhook-relay.com and it works great), though you could also write a POST forwarder yourself if you have any internet-facing web application.  You would then only accept
+There are commercial solutions for this (I have tested webhookrelay.com and it works great), though you could also write a POST forwarder yourself if you have any internet-facing web application.  You would then only accept
 connections from your source control management system for the webhook URL, for example, the public IPs from github.
 
 Testing
