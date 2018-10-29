@@ -53,7 +53,7 @@ Superusers in the main application will still have full access.
 Isolation Methods for Worker Pools
 ----------------------------------
 
-Vespene [Worker Pools](workers.html) have configurable isolation modes for security reasons.
+Vespene :ref:`Worker Pools <workers>` have configurable isolation modes for security reasons.
 
 If you have docker installed, the "Basic Container" isolation mode will be the easiest to set up.
 
@@ -135,7 +135,7 @@ Use the basic_container isolation mode if you want to avoid this.
 It's generally not a problem that one developer might try to pollute the build directories of another build, but it is technically
 possible, and is possible in most production build systems.
 
-Projcet Insertion and Spamming
+Project Insertion and Spamming
 ------------------------------
 
 In the stock configuration any user can create any number of objects, because we trust users who are given access to Vespene
