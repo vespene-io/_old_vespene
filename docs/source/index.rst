@@ -76,7 +76,7 @@ Links
 =====
 
 * `Forum <http://talk.vespene.io>`_ - user and developer conversation
-* `GitHub <http://github.com/vespene-io/vespene.>`_ - code checkouts, pull requests, and bug reports
+* `GitHub <http://github.com/vespene-io/vespene>`_ - code checkouts, pull requests, and bug reports
 * `Homepage <http://vespene.io>`_ - homepage, low-traffic announcement list signup
 * `@vespene_io <http://twitter.com/vespene_io>`_ and `@laserllama <http://twitter.com/laserllama>`_ - twitter
 
