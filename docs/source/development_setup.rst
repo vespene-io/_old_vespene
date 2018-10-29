@@ -20,7 +20,7 @@ Git Checkout
 
 First grab the master branch from github::
 
-   git clone https://github.com/vespene/vespene
+   git clone https://github.com/vespene-io/vespene
 
 OS X Python 3.X Setup
 ---------------------
