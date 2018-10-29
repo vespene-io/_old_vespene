@@ -254,7 +254,7 @@ The nice thing about doing them in bash was that it's easy for someone to unders
 system they know.
 
 Upgrades & Maintenance
----------------------
+----------------------
 
 You don't have to do it now, but you should probably read :ref:`upgrades` and :ref:`cli` (for cleanup commands) before you get too far along.
 They talk about the update step for database migrations, backups, and managing clutter from build artifacts. In all, there's not a lot of associated
