@@ -18,7 +18,7 @@ mkdir -p /var/log/vespene
 # generate the supervisor configuration
 echo "generating supervisor config..."
 cd /opt/vespene
-$PYTHON manage.py generate_supervisor --controller --path /etc/vespene/supervisord.conf --workers "$WORKER_CONFIG" --executable=$PYTHON
+$PYTHON manage.py generate_supervisor --path /etc/vespene/supervisord.conf --workers "$WORKER_CONFIG" --executable=$PYTHON
 
 echo "creating init script..."
 # generate systemd init script
