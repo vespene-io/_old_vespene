@@ -1,5 +1,5 @@
 Django==2.1.2
-psycopg2-binary
+psycopg2-binary==2.7.5
 requests==2.19.1
 jinja2==2.10
 django-crispy-forms==1.7.2
