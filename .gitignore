@@ -1,0 +1,17 @@
+.DS_Store
+*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+*.rdb
+*.mp4
+vespene/local_settings.py
+docs/build/
+docs/source/vespene_logo.png
+__pycache__/
+.svn/*
+/static/
+/env/*
+*.swp
+*.mp4
+

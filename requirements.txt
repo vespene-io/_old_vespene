@@ -1,0 +1,16 @@
+Django==2.1.2
+psycopg2-binary
+requests==2.19.1
+jinja2==2.10
+django-crispy-forms==1.7.2
+sphinx-autobuild==0.7.1
+sphinx==1.7.6
+django-split-settings==0.3.0
+slackclient==1.2.1
+whitenoise==4.1
+sphinx_rtd_theme==0.4.1
+cryptography
+fernet==1.0.1
+gunicorn==19.9.0
+PyGithub==1.43.2
+PyYAML==3.13

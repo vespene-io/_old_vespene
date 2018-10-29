@@ -1,0 +1,21 @@
+{% extends "theme.j2" %}
+
+{% block content %}
+<h2>{{ path }}</h2>
+<table border=1 class="table">
+{% for file in files %}
+<tr>
+   <td>
+        {% if file['directory'] %}
+        <i><a href="{{ url }}/d?p={{ file['full_path'] }}">{{ file['basename'] }}</a></i>
+        {% else %}
+        <a href="{{ url }}/f/{{ file['basename'] }}?p={{ file['full_path'] }}">{{ file['basename'] }}</a>
+        {% endif %}
+   </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+

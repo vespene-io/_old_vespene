@@ -1,0 +1,47 @@
+{% extends "theme.j2" %}
+
+{% block content %}
+<br/>
+
+{% set can_edit = False %}
+{% if flavor == 'Detail' %}
+    {% if permissions.check_can_edit(obj, request) %}
+        {% set can_edit = True %}
+    {% endif %}
+    <h1>{{ object_label }}: {{ obj }}</h1>
+{% elif flavor == 'New' %}
+    <h1>Create {{ object_label }}</h1>
+{% elif flavor == 'Edit' %}
+    {% if permissions.check_can_edit(obj, request) %}
+        {% set can_edit = True %}
+    {% endif %}
+    <h1>Edit {{ object_label }}: {{ obj }}</h1>
+{% endif %}
+    <form method="POST" class="post-form" id='editForm' disabled>
+        <table class="table">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
+        {% if flavor == 'Detail' %}
+        {{ crispy(form.make_read_only()) }}
+        {% else %}
+        {{ crispy(form) }}
+        {% endif %}
+        </table>
+        {% if flavor == 'New' or (flavor == 'Edit' and can_edit) %}
+        <button type="submit" class="save btn btn-success">Save</button>
+        {% elif flavor == 'Detail' and can_edit %}
+        <a href="../{{obj.id}}/edit"><i class="fas fa-edit"></i> Edit</a>
+        {% endif %}
+    </form>
+{% endblock %}
+
+{% block extra_javascript %}
+
+$(document).ready(function() {
+    no_validate_form_hack()
+});
+
+{% endblock %}
+
+
+
+

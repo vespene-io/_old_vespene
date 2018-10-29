@@ -1,0 +1,33 @@
+{% extends "theme.j2" %}
+
+{% block content %}
+
+<h2>Pipeline: {{ pipeline.name}} </h2>
+
+<table border=1 class="table">
+
+<tr>
+<th>Stage</th>
+<th colspan={{ width }}>Projects</th>
+</tr>
+
+{% for stage in stages %}
+<tr>
+    <td>
+    {{ stage.name }}
+    </td>
+    {% for project in projects_by_stage[stage.name] %}
+    <td>
+    {{ describe_project(project) | safe }}
+    </td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+<a href="/ui/pipelines/{{ pipeline.id }}/edit"><i class="far fa-edit" data-toggle="tooltip" title="Edit"></i></a></h2>
+
+{% endblock %}
+
+{% block extra_javascript %}
+{% endblock %}

@@ -1,0 +1,87 @@
+<html>
+<!-- (C) 2018 Michael DeHaan and The Vespene Project -->
+<!-- this source code is Apache 2 licensed and available from http://vespene.io -->
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{{ static('css/bootstrap.min.css') }}"/>
+<link rel="stylesheet" href="{{ static('css/all.css') }}"/>
+<link rel="stylesheet" href="{{ static('css/vespene.css') }}"/>
+<script src="{{ static('js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ static('js/bootstrap.min.js') }}"></script>
+<script src="{{ static('js/vespene.js') }}"></script>
+
+<script>
+
+var csrf_token = '{{ csrf_token }}';
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+{% block extra_javascript %}
+{% endblock %}
+</script>
+
+<title>{% block title %}Vespene{% endblock %}</title>
+</head>
+
+<body>
+
+<div id='universe'>
+
+<nav class="navbar">
+<div class="container-fluid">
+<div class="navbar-header">
+     <a class="navbar-brand" href="/"><img src="{{ static('/png/vespene_logo.png') }}" alt="Vespene" height=50></a>
+</div>
+<ul class="nav navbar-nav" id="vespene_nav">
+<li><a class="{% if object_label == 'Project' %}active{% endif %}" href="/ui/projects">Projects</a></li>
+<li><a class="{% if object_label == 'Build' %}active{% endif %}" href="/ui/builds">Builds</a></li>
+<li><a class="{% if object_label == 'Pipeline' %}active{% endif %}" href="/ui/pipelines">Pipelines</a></li>
+<li><a class="{% if object_label == 'Stage' %}active{% endif %}" href="/ui/stages">Stages</a></li>
+<li><a class="{% if object_label == 'Snippet' %}active{% endif %}" href="/ui/snippets">Snippets</a></li>
+<li><a class="{% if object_label == 'Variable Set' %}active{% endif %}" href="/ui/variable_sets">Variables</a></li>
+<li><a class="{% if object_label == 'Service Login' %}active{% endif %}" href="/ui/service_logins">Logins</a></li>
+<li><a class="{% if object_label == 'SSH Key' %}active{% endif %}" href="/ui/ssh_keys">SSH Keys</a></li>
+<li><a class="{% if object_label == 'Organization' %}active{% endif %}" href="/ui/organizations">Organizations</a></li>
+<li><a class="{% if object_label == 'Worker Pool' %}active{% endif %}" href="/ui/worker_pools">Worker Pools</a></li>
+<li><a class="{% if object_label == 'User' %}active{% endif %}" href="/ui/users">Users</a></li>
+<li><a class="{% if object_label == 'Group' %}active{% endif %}" href="/ui/groups">Groups</a></li>
+
+
+{% if user and not user.is_anonymous %}
+<li><a class="" href="{{ url('logout') }}?next=/login">[Logout {{ user.username }}]</a></li>
+{% endif %}
+</ul>
+</div>
+</nav>
+
+
+
+<div id='content'>
+
+{% if messages %}
+<ul class="messages">
+    {% for msg in messages %}       
+        <div class="alert alert-{{msg.level_tag}}" role="alert">
+        {{msg.message|safe}}
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+</div>
+
+</div>
+
+<br/>
+<br>
+<center><font size="-4" color="#101010">Vespene {{ version }}. (C) 2018 Michael DeHaan LLC + Contributors.</font></center>
+
+</body>
+
+</html>

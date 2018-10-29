@@ -1,0 +1,66 @@
+{% extends "theme.j2" %}
+
+{% block content %}
+<br/>
+
+
+<h1>Start {{ object_label }}: {{ obj }}</h1>
+
+<i>Before you can start this project you must answer the following configured questions.</i>
+
+<form method="POST" class="post-form" id='editForm' disabled>
+
+<table class="table" border=1>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
+
+{% for question in questions %}
+
+    {% set question_prompt = question.get('prompt', 'invalid') %}
+    {% set question_type = question.get('type', 'text') %}
+    {% set question_variable = question.get('variable', 'invalid') %}
+    {% set question_choices = question.get('choices', []) %}
+
+    <tr>
+    {% if question_prompt != 'invalid' %}
+    <td>{{ question_prompt }}</td>
+    {% else %}
+    <td>{{ question_variable }}</td>
+    {% endif %}
+    <td>
+
+    {% if question_variable == 'invalid' %}
+        This question is malformed. Please specify 'variable' in the configuration.
+    {% else %}
+    {% if question_type == 'text' %}
+        <input type='text' name='{{ question_variable }}'/>
+    {% elif question_type == 'radio' %}
+        {% if (question_choices | length) < 1 %}
+        This question is malformed. Please specify 'choices' in the configuration.
+        {% else %}
+        {% for choice in question_choices %}
+        <input type='radio' name='{{ question_variable }}' value='{{ choice }}'/> {{ choice }}<br/>
+        {% endfor %}
+        {% endif %}
+    {% elif question_type == 'multi' %}
+        {% if (question_choices | length) < 1 %}
+        This question is malformed. Please specify 'choices' in the configuration.
+        {% else %}
+        <fieldset>
+        {% for choice in question_choices %}
+        <input type='checkbox' name='{{ question_variable }}' value='{{ choice }}'/> {{ choice }}<br/>
+        {% endfor %}
+        </fieldset>
+        {% endif %}
+    {% else %}
+        This question is malformed. The question type '{{ question_type }}' is not supported.
+    {% endif %}
+    {% endif %}
+{% endfor %}
+
+</td>
+</tr>
+</table>
+<button type="submit" class="save btn btn-success">Start</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+#universe {
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#content {
+    margin: auto;
+    margin-top: 10px;
+}
+
+#pagination {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#actions {
+    margin-top: 10px;
+    width: 70%;
+    display: inline-block;
+    float: right;
+}
+
+#vespene_nav {
+    margin-top: 17px;
+}
+
+fieldset[disabled] {
+    pointer-events: none;
+    opacity: .65;
+}
+

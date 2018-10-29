@@ -1,0 +1,71 @@
+{% extends "theme.j2" %}
+
+{% block content %}
+<table border=1 class="table">
+ <thead>
+    <tr>
+      <th scope="col">{{ object_label }}</th>
+      {% for col in extra_columns %}
+      <th scope="col">{{ col[0] }}</th>
+      {% endfor %}
+      {% if supports_delete %}
+      <th scope="col">Delete</th>
+      {% endif %}
+    </tr>
+  </thead>
+<tr>
+{% for obj in objects %}
+<tr>
+   <td>
+      {% if supports_edit %}
+        <a href="{{ url(edit_view, kwargs=dict(pk=obj.id)) }}">
+      {% else %}
+        <a href="{{ url(detail_view, kwargs=dict(pk=obj.id)) }}">
+      {% endif %}
+      {{ name_cell(obj) | safe }}
+   </a>
+   </td>
+   
+   {% for col in extra_columns %}
+   <td> {{ col[1](obj) | safe }}</td>
+   {% endfor %}
+        
+   {% if supports_delete %}
+   <td>
+        <a onclick="confirm_post('{{ url(delete_view, kwargs=dict(pk=obj.id)) }}', 'Confirm deletion of {{ object_label }} {{ obj }}?', csrf_token);">
+        <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
+        </a>
+   </td>
+   {% endif %}
+
+</tr>
+{% endfor %}
+</table>
+
+<div id="pagination">
+Page: {% if page > 1 %}
+<a href="{{ url(list_view) }}?page={{ page-1 }}">&lt;</a>&nbsp;
+{% endif %}
+{% for pg in page_range %}
+{% if page == pg %}
+{{ pg }}
+{% else %}
+<a href="{{ url(list_view) }}?page={{ loop.index }}">{{ loop.index }}</a>
+{% endif %} 
+{% endfor  %}
+{% if page < num_pages %}
+&nbsp;<a href="{{ url(list_view) }}?page={{page+1 }}">&gt;</a>
+{% endif %}
+</div>
+
+<div id="actions" align="right">
+{% if supports_new %}
+<a href='{{ url(new_view) }}'
+<button type="button" class="btn"><i class="fas fa-plus" aria-hidden="true"></i>New {{ object_label }}</button>
+</a>
+{% endif %}
+</div>
+
+{% endblock %}
+
+
