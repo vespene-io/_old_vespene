@@ -10,7 +10,7 @@ if [ "$DISTRO" == "redhat" ]; then
     yum -y install gcc python36 python36-devel postgresql supervisor
     python36 -m ensurepip
 elif [ "$DISTRO" == "ubuntu" ]; then
-    sudo apt-add-repository universe
+    apt-add-repository universe
     # apt-get update
     apt-get install -y python3 python3-setuptools python3-pip gcc postgresql supervisor
 fi
