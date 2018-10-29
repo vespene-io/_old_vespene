@@ -82,7 +82,7 @@ Preparations
 
 We'll start by checking out Vespene into a temporary directory::
 
-	git clone https://github.com/vespene/vespene.git ./vespene
+	git clone https://github.com/vespene-io/vespene.git ./vespene
 	cd ./setup/<your-operating-system>
 
 If your Linux/Unix operating system isn't in the list of example installation scripts,  you can
