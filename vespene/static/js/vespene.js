@@ -1,10 +1,5 @@
 var csrf_token = '{{ csrf_token }}';
 
-// FIXME: not using these, can remove
-//$(document).ready(function(){
-//    $('[data-toggle="tooltip"]').tooltip(); 
-//});
-
 function is_valid_json(data) {
     try {
        response = jQuery.parseJSON(data);
