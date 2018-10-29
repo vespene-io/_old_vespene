@@ -25,7 +25,7 @@ echo "Cloning the project into /opt/vespene..."
 git clone https://github.com/mpdehaan/vespene.git /opt/vespene
 
 echo "Installing python packages..."
-CMD="$PIP install -r ../../requirements.txt --trusted-host pypi.org --trusted-host files.pypi.org --trusted-host files.pythonhosted.org"
+CMD="$PYTHON -m pip install -r ../requirements.txt --trusted-host pypi.org --trusted-host files.pypi.org --trusted-host files.pythonhosted.org"
 echo $CMD
 $CMD
 
