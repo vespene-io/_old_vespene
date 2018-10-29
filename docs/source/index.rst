@@ -48,7 +48,7 @@ Vespene features :ref:`pipelines` to construct complex CI/CD topologies - succes
 Admin-Focused
 =============
 
-Another key inspiration was Vespene was frustration with setup, configuration, and maintaince of other CI/CD platforms.
+Another key inspiration for Vespene was frustration with setup, configuration, and maintenance of other CI/CD platforms.
 
 Vespene is also straightforward to :ref:`setup` and maintain. GitHub organizations can be sucked in automatically, and configured with ".vespene" files (see :ref:`importing`). From an admin perspective, there are no message queues or clunky leader election clusters to keep running, and every node in the cluster has the same configuration.
 
