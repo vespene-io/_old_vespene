@@ -60,7 +60,7 @@ hosting services around Vespene of any kind. There are no customer-only enterpri
 Accordingly, Vespene is licensed with the Apache 2.0 license with the Commons Clause restriction, which means that you cannot charge for the
 software in any way without approval from Michael DeHaan LLC, and this includes paid consulting, support, or hosting services. To do these
 things, you can join the Vespene Partner Program - for small organizations, membership is completely free once approved. You can read more at 
-[docs.vespene.io/partners.html](http://docs.vespene.io/partners.html).
+[docs.vespene.io/partnership.html](http://docs.vespene.io/partnership.html).
 
 Author
 ======
