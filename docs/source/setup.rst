@@ -253,12 +253,12 @@ You should probably still take a look at these scripts for reference.
 The nice thing about doing them in bash was that it's easy for someone to understand regardless of what automation
 system they know.
 
-Upgrades & Maintaince
+Upgrades & Maintenance
 ---------------------
 
 You don't have to do it now, but you should probably read :ref:`upgrades` and :ref:`cli` (for cleanup commands) before you get too far along.
-They talks about the update step for database migrations, backups, and managing clutter from build artifacts. In all, there's not a lot of associated
-maintaince activity to worry about.
+They talk about the update step for database migrations, backups, and managing clutter from build artifacts. In all, there's not a lot of associated
+maintenance activity to worry about.
 
 Thanks for trying out Vespene and have fun!
 
