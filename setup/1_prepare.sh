@@ -22,7 +22,7 @@ mkdir -p /var/spool/vespene
 mkdir -p /etc/vespene/settings.d/
 
 echo "Cloning the project into /opt/vespene..."
-git clone https://github.com/mpdehaan/vespene.git /opt/vespene
+git clone https://github.com/vespene-io/vespene.git /opt/vespene
 
 echo "Installing python packages..."
 CMD="$PIP install -r ../../requirements.txt --trusted-host pypi.org --trusted-host files.pypi.org --trusted-host files.pythonhosted.org"
