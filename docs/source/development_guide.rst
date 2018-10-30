@@ -22,6 +22,18 @@ There are two tiers to the application, technically - the web node and workers, 
 
 The web app uses Django (via Python 3) and talks to the PostgreSQL database. Workers use Django model code (but no web stack) and share the same database.  Both are kicked off by supervisord, which in the production setup, is in turn launched by systemd (or whatever is the init system for the OS).
 
+Git
+---
+
+Please alias "git merge" to "git pull --rebase" and avoid submitting merge commits in  your code.  If you have been working on
+code for a long time, you can run "git pull --rebase" to move your commits to the "top" of the stack, making them easier
+to understand when looking at a pull request.
+
+We recommend using local feature ("topic") branches if you are working on multiple things at one time, to avoid those
+commits becoming intermixed in a pull request.
+
+Occasionally we may request you rebase a pull request and update it if there are some conflicts that we would find hard to resolve or may need some updated testing, butin general it should not be a common event.
+
 Code Structure
 --------------
 
