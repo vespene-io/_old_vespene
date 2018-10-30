@@ -11,8 +11,8 @@ if [ "$DISTRO" == "redhat" ]; then
     python36 -m ensurepip
 elif [ "$DISTRO" == "ubuntu" ]; then
     apt-add-repository universe
-    # apt-get update
-    apt-get install -y gcc libssl-dev postgresql python3 python3-pip python3-setuptools supervisor
+    apt-get update
+    apt-get install -y gcc libssl-dev postgresql-client python3 python3-pip python3-setuptools supervisor
 elif [ "$DISTRO" == "archlinux" ]; then
     pacman --noconfirm -Sy python python-pip python-setuptools postgresql supervisor sudo
 fi

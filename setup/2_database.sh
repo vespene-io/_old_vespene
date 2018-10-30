@@ -14,7 +14,7 @@ if [[ "$DISTRO" == "redhat" ]]; then
    yum -y install postgresql-server
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
 elif [[ "$IDSTRO" == "ubuntu" ]]; then
-   apt install -y postgresql-server
+   apt install -y postgresql postgresql-contrib
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"
 elif [[ "$DISTRO" == "archlinux" ]]; then
    CONFIG="/var/lib/postgres/data/pg_hba.conf"
