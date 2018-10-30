@@ -14,7 +14,7 @@ but try the following things first.
 My build takes a long time to execute / hangs
 ---------------------------------------------
 
-Vespne makes a lot of effort to try to ensure software checkouts are non-interactive.
+Vespene makes a lot of effort to try to ensure software checkouts are non-interactive.
 
 Checkouts are always executed with timeout commands to not permanently block workers, but occasionally some
 bad configurations may block builds for longer than you would like.
@@ -119,7 +119,7 @@ A REST API for the system is not yet available, but will be added in late 2018. 
 Can I use Apache or NGINX with Vespene?
 ---------------------------------------
 
-Yes, you can proxy Vespene's server (gnuicorn) with another web server.  However Vespene expects to be "/", so you can't mount
+Yes, you can proxy Vespene's server (gunicorn) with another web server.  However Vespene expects to be "/", so you can't mount
 those URLs on a different URL space at this point.
 
 How is Windows support?
