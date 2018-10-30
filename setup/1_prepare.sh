@@ -15,6 +15,8 @@ elif [ "$DISTRO" == "ubuntu" ]; then
     apt-get install -y gcc libssl-dev postgresql-client python3 python3-pip python3-setuptools supervisor
 elif [ "$DISTRO" == "archlinux" ]; then
     pacman --noconfirm -Sy python python-pip python-setuptools postgresql supervisor sudo
+elif [ "$DISTRO" == "MacOS" ]; then
+    brew install python@3 postgresql supervisor
 fi
 
 echo "Setting up directories..."
