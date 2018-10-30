@@ -27,7 +27,7 @@ minprocs=200
 
 WEB = """
 [program:server]
-command=gunicorn --bind 0.0.0.0:8000 vespene.wsgi 
+command=gunicorn %s vespene.wsgi 
 process_name=%s
 directory=%s
 autostart=true
@@ -50,8 +50,8 @@ stdout_logfile = /var/log/vespene/worker_%s.log
 stdout_logfile_maxbytes=50MB
 """
 
-# USAGE: manage.py generate_supervisor --path /etc/vespene/supervisord.conf --workers "name1=2 name2=5" --executable `which python` --source=/opt/vespene
-
+# USAGE: manage.py generate_supervisor --path /etc/vespene/supervisord.conf --workers "name1=2 name2=5" \
+#        --executable `which python` --source=/opt/vespene --gunicorn "--bind 127.0.0.1:8000"
 LOG = Logger()
 
 class Command(BaseCommand):
@@ -62,13 +62,15 @@ class Command(BaseCommand):
         parser.add_argument('--workers', type=str, help="what workers to run?")
         parser.add_argument('--executable', type=str, help="python executable")
         parser.add_argument('--source', type=str, help='source')
+        parser.add_argument('--gunicorn", type=str, help='gnuicorn options string', default='--bind 127.0.0.1:8000"
 
     def handle(self, *args, **options):
 
         path = options.get('path', None)
         workers = options.get('workers', None)
         python = options.get('executable', None)
-        source = options.get('source', '/opt/vespene/')
+        source = options.get('source', None)
+        gunicorn = options.get('gunicorn', None)
 
         if not workers and not "=" in workers:
             raise CommandError("worker configuration does not look correct")
@@ -80,7 +82,7 @@ class Command(BaseCommand):
         fd = open(path, "w+")
         fd.write(PREAMBLE)
         fd.write("\n")
-        fd.write(WEB % ("%(program_name)s", source))
+        fd.write(WEB % (gunicorn, "%(program_name)s", source))
         fd.write("\n")
 
         for worker in workers:

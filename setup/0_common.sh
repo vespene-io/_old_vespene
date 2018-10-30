@@ -2,9 +2,21 @@
 # /etc/vespene/settings.d/database.py info
 # --
 
-# Please change these settings!
+# Database configuration
+# the local database is fine for an initial deployment
+# be sure to change the password!
 DBSERVER="127.0.0.1"
 DBPASS="vespene!"
+
+# --
+# webserver info
+# --
+
+# options to feed to gunicorn in /etc/vespene/supervisord.conf
+# if you change this to 0.0.0.0 to bind to all addresses be
+# sure to set up SSL
+
+GUNICORN_OPTS = "--bind 127.0.0.1:8000"
 
 # --
 # /etc/vespene/settings.d/build.py info
@@ -16,12 +28,9 @@ BUILDROOT="/tmp/vespene"
 # /etc/vespene/supervisord.conf info
 # ---
 
-# Should this machine be running the Vespene webUI?
-IS_CONTROLLER="true"
-
-# Should this machine be running any workers, this is a space separated 
-# string of key=value pairs where the name is a worker pool name 
-# (configured in the Vespene UI) and the value is the number of copies 
+# Should this machine be running any workers? 
+# This is a space separated string of key=value pairs where the name is a 
+# worker pool name (configured in the Vespene UI) and the value is the number of copies 
 # of that worker to run. Increasing the number increases parallelism.
 
 # WORKER_CONFIG="general=2 tutorial-pool=1"
