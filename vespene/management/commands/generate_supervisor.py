@@ -27,7 +27,7 @@ minprocs=200
 
 WEB = """
 [program:server]
-command=gunicorn vespene.wsgi 
+command=gunicorn --bind 0.0.0.0:8000 vespene.wsgi 
 process_name=%s
 directory=%s
 autostart=true
