@@ -44,8 +44,8 @@ as templated through the :ref:`variables` system.
 Platform Support
 ----------------
 
-It is important to note that the builders have been developed for OS X, *BSD, and Linux operating systems, and have not been tested on windows at this
-point. We openly welcome community contributions for windows builder support.  This will probably require some *very minor*
+It is important to note that the builders have been developed for *OS X, BSD, and Linux operating systems, and have not been tested on windows at this
+point*. We openly welcome community contributions for windows builder support.  This will probably require some *very minor*
 changes to add a new isolation mode, which is discussed below. Let's talk about this on the forum!
 
 .. _worker_pools:
@@ -96,9 +96,9 @@ they can do anything, but they do run from the worker machines.
 
 A working directory is then prepared using the build root configured in settings.py, named after the build number.
 
-The worker will then add any :ref:`ssh` keys associated with the project before running the build.
+The worker will then add any :ref:`ssh` associated with the project before running the build.
 
-The worker will then perform any source control checkouts using any :ref:`service_logins` or :ref:`ssh` keys,
+The worker will then perform any source control checkouts using any :ref:`service_logins` or :ref:`ssh`,
 but not all build scripts are required to have a repo associated with them.  They could just run a simple script
 without a checkout (if the project SCM type is set to "none").
 
@@ -157,7 +157,7 @@ Sudo Isolation
 ==============
 
 The first mode, sudo, switches to a sudo user before running the build script.  This mode comes with few dependencies and is easy
-to set up. On the worker pool, the sudo_user must be configured, and this user as described in :ref:`security` must NOT
+to set up. On the worker pool, the sudo_user must be configured, and this user as described in the :ref:`security` must NOT
 have access to read the Vespene configuration files.
 
 .. _container_isolation:
