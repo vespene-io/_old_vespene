@@ -13,6 +13,8 @@ elif [ "$DISTRO" == "ubuntu" ]; then
     apt-add-repository universe
     # apt-get update
     apt-get install -y python3 python3-setuptools python3-pip gcc postgresql supervisor
+elif [ "$DISTRO" == "archlinux" ]; then
+    pacman --noconfirm -Sy python python-pip python-setuptools postgresql supervisor sudo
 fi
 
 echo "Setting up directories..."
@@ -28,6 +30,3 @@ echo "Installing python packages..."
 CMD="$PYTHON -m pip install -r ../requirements.txt --trusted-host pypi.org --trusted-host files.pypi.org --trusted-host files.pythonhosted.org"
 echo $CMD
 $CMD
-
-
-
