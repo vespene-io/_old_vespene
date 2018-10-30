@@ -16,10 +16,16 @@ if [[ "$DISTRO" == "redhat" ]]; then
 elif [[ "$IDSTRO" == "ubuntu" ]]; then
    apt install -y postgresql-server
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"
+elif [[ "$DISTRO" == "archlinux" ]]; then
+   CONFIG="/var/lib/postgres/data/pg_hba.conf"
 fi
 
 echo "initializing the database server..."
-sudo -u postgres postgresql-setup initdb
+if [[ "$DISTRO" == "archlinux" ]]; then
+    sudo -u postgres initdb -D '/var/lib/postgres/data'
+else
+    sudo -u postgres postgresql-setup initdb
+fi
 
 echo "configuring security..."
 # configure PostgreSQL security to allow the postgres account in locally, and allow
@@ -33,6 +39,7 @@ END_OF_CONF
 
 echo "starting postgresql..."
 # start the PostgreSQL service using systemd
+systemctl enable postgresql.service
 systemctl start postgresql.service
 
 echo "creating the vespene database and user..."
@@ -51,5 +58,3 @@ echo "granting access..."
 # give the user access and set their password
 sudo -u postgres psql -U postgres -d vespene -c "GRANT ALL on DATABASE vespene TO vespene"
 sudo -u postgres psql -U postgres -d vespene -c "ALTER USER vespene WITH ENCRYPTED PASSWORD '$DBPASS'"
-
-

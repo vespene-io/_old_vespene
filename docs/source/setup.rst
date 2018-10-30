@@ -14,7 +14,7 @@ Thanks for the interest in setting up Vespene!
 To start, Vespene is a Python-based application.
 
 At a technical level, it is implemented using the Django web-framework on the frontend, and supervisord and custom
-python daemons (which also use Django code without the webserver) on the backend.  Both layers share a PostgreSQL database.
+Python daemons (which also use Django code without the webserver) on the backend.  Both layers share a PostgreSQL database.
 You will not need to know anything about Django to run the application, but if you do know Django, the following instructions
 should be a bit familiar to you.
 
@@ -69,7 +69,7 @@ This is what you should start with as you explore Vespene for the first time.
 
 The configuration for a larger installation is exactly the same - just run the same steps everywhere, possibly only changing
 the worker configuration from box to box - you can run multiple web nodes and multiple worker boxes, without any special effort. 
-You of course will also only install one databse, and then configure the workers to connect to that database using the python settings files.
+You of course will also only install one database, and then configure the workers to connect to that database using the Python settings files.
 
 The workers communicate through a common database using lightweight database polling to 
 avoid an extra message bus dependency (for now, anyway), so as long as they have the same database configuration, life is good.
@@ -83,9 +83,9 @@ Preparations
 We'll start by checking out Vespene into a temporary directory::
 
 	git clone https://github.com/vespene-io/vespene.git ./vespene
-	cd ./setup/<your-operating-system>
+	cd ./vespene/setup
 
-If your Linux/Unix operating system isn't in the list of example installation scripts,  you can
+If your Linux/Unix operating system isn't in the list of example installation scripts, you can
 probably read the setup scripts and adapt instructions accordingly without too much
 trouble.
 
@@ -101,12 +101,12 @@ starting choices::
 
 Note the database address you chose in this file. If you plan to use an external database, 
 name that hostname now, and keep that in mind when you get to the database setup step a bit later on. 
-Otherwise, you'll install it as part of this setup process. You could also choose to use an external databse,
+Otherwise, you'll install it as part of this setup process. You could also choose to use an external database,
 such as PostgreSQL on Amazon RDS.
 
 It is important to be aware that this configuration you are editing now is just for the install automation, normally Vespene configuration
 lives in /etc/vespene. These setup scripts will be configuring some settings in /etc/vespene
-with your choices.  There are some defaults that ship with the application (like :ref:`plugins`) that are completely skipped by this
+with your choices. There are some defaults that ship with the application (like :ref:`plugins`) that are completely skipped by this
 setup process, and you'll want to read up on those later once you have things working. You'll get Vespene with a minimal plugin
 configuration that should work for leaning the tool, but that you might want to customize later.
 
@@ -117,7 +117,7 @@ Software Dependency Setup
 
 It's time to install some dependencies.
 
-This step will install python 3 (if needed) and then install python dependencies.
+This step will install Python 3 (if needed) and then install Python dependencies.
 
 Once installed, Vespene will reside in /opt/vespene and settings will be in /etc/vespene/.
 
@@ -201,14 +201,14 @@ You could of course also edit the supervisor config directly in /etc/supervisord
 "vespene.service" systemd service.
 
 Once started, Vespene will serve the UI on port 8000, which should be enough for most
-production deployments. You could choose to proxy it with NGinx or Apache if you wanted, for instance
+production deployments. You could choose to proxy it with NGINX or Apache if you wanted, for instance
 to add an SSL cert.
 
 You can also choose to use something other than supervisor to run the worker processes if you wish.
 Nothing in Vespene itself checks for these to be managed by supervisor, so if you start them some other
 way, that is acceptable.
 
-One minor gotcha is we didn't know in advance if you wanted to install the database server on the
+One minor gotcha is that we didn't know in advance if you wanted to install the database server on the
 same box as the Vespene services, so the Vespene services don't normally have a startup dependency on the
 database.  You can add this by editing the systemd unit file.
 

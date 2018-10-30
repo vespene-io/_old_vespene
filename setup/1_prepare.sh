@@ -20,6 +20,8 @@ elif [ "$DISTRO" == "ubuntu" ]; then
       python3-pip \
       python3-setuptools \
       supervisor
+elif [ "$DISTRO" == "archlinux" ]; then
+    pacman --noconfirm -Sy python python-pip python-setuptools postgresql supervisor sudo
 fi
 
 echo "Setting up directories..."

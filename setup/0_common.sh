@@ -36,10 +36,12 @@ if [ "$OSTYPE" == "linux-gnu" ]; then
       DISTRO="ubuntu"
       PYTHON="/usr/bin/python3"
       PIP="/usr/bin/pip3"
+   elif [ -f /usr/bin/pacman ]; then
+      DISTRO="archlinux"
+      PYTHON="/usr/bin/python"
+      PIP="/usr/bin/pip"
    fi
 else
    echo "this OS may work with Vespene but we don't have setup automation for this just yet"
    DISTRO="?"
 fi
-
-
