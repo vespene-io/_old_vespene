@@ -19,9 +19,10 @@ BUILDROOT="/tmp/vespene"
 # Should this machine be running the Vespene webUI?
 IS_CONTROLLER="true"
 
-# Should this machine be running any workers, this is a comma-split string of key=value pairs where the name 
-# is a worker pool name (configured in the Vespene UI) and the value is the number of copies of that worker to
-# run. Increasing the number increases parallelism.
+# Should this machine be running any workers, this is a space separated 
+# string of key=value pairs where the name is a worker pool name 
+# (configured in the Vespene UI) and the value is the number of copies 
+# of that worker to run. Increasing the number increases parallelism.
 
 # WORKER_CONFIG="general=2 tutorial-pool=1"
 WORKER_CONFIG="tutorial-pool=1"
