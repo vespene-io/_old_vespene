@@ -12,7 +12,14 @@ if [ "$DISTRO" == "redhat" ]; then
 elif [ "$DISTRO" == "ubuntu" ]; then
     apt-add-repository universe
     # apt-get update
-    apt-get install -y python3 python3-setuptools python3-pip gcc postgresql supervisor
+    apt-get install -y \
+      gcc \
+      libssl-dev \
+      postgresql \
+      python3 \
+      python3-pip \
+      python3-setuptools \
+      supervisor
 fi
 
 echo "Setting up directories..."
@@ -28,6 +35,3 @@ echo "Installing python packages..."
 CMD="$PYTHON -m pip install -r ../requirements.txt --trusted-host pypi.org --trusted-host files.pypi.org --trusted-host files.pythonhosted.org"
 echo $CMD
 $CMD
-
-
-
