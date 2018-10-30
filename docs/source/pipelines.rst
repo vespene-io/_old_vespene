@@ -10,7 +10,8 @@ Pipelines
 Pipelines are a method of triggering one or more jobs, in stages, when other jobs complete.  A build system is already a "continuous integration" system, so pipelines extend it to become the hub of
 a "continuous deployment" system.
 
-Vespene pipelines are configured graphically, without any special language or data format.
+Vespene pipelines are created graphically, without any special language or data format, but projects may add themselves
+to pipelines using .vespene files (see :ref:`importing`) dynamically if so configured.
 
 Builds in a pipeline can intelligently pass variables between one another using :ref:`output_variables`.
 
