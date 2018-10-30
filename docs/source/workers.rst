@@ -44,8 +44,8 @@ as templated through the :ref:`variables` system.
 Platform Support
 ----------------
 
-It is important to note that the builders have been developed for *OS X, BSD, and Linux operating systems, and have not been tested on windows at this
-point*. We openly welcome community contributions for windows builder support.  This will probably require some *very minor*
+It is important to note that the builders have been developed for OS X, BSD, and Linux operating systems, and have not been tested on windows at this
+point. We openly welcome community contributions for windows builder support.  This will probably require some *very minor*
 changes to add a new isolation mode, which is discussed below. Let's talk about this on the forum!
 
 .. _worker_pools:
