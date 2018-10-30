@@ -19,7 +19,7 @@ Initialization
 
 As per the :ref:`setup`, you should have already run this once::
 
-   python manage.py tutorial_setup.
+   python manage.py tutorial_setup
 
 This populates Vespene with some sample builds - they don't do very much, and a basic configuration, to make it a bit more friendly when logging in
 for the first time.
