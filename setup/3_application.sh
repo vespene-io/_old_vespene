@@ -12,14 +12,12 @@
 # load common settings
 source ./0_common.sh
 
-mkdir -p /etc/vespene/settings.d/
-
 cd /opt/vespene
 echo $PYTHON
-$PYTHON manage.py generate_secret
+sudo $PYTHON manage.py generate_secret
 
 # application database config
-cat >/etc/vespene/settings.d/database.py <<END_OF_DATABASES
+sudo tee -a /etc/vespene/settings.d/database.py >/dev/null <<END_OF_DATABASES
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -32,8 +30,9 @@ DATABASES = {
 }
 END_OF_DATABASES
 
+
 # worker configuration settings
-cat > /etc/vespene/settings.d/workers.py << END_OF_WORKERS
+sudo tee -a /etc/vespene/settings.d/workers.py >/dev/null << END_OF_WORKERS
 BUILD_ROOT="$BUILD_ROOT"
 # FILESERVING_ENABLED = True
 # FILESERVING_PORT = 8000
@@ -41,13 +40,16 @@ BUILD_ROOT="$BUILD_ROOT"
 END_OF_WORKERS
 
 # ui settings
-cat > /etc/vespene/settings.d/interface.py << END_OF_INTERFACE
+sudo tee -a /etc/vespene/settings.d/interface.py >/dev/null << END_OF_INTERFACE
 BUILDROOT_WEB_LINK="$BUILDROOT_WEB_LINK"
 END_OF_INTERFACE
+
+# ensure app user can read all of this
+echo sudo chown -R $APP_USER /etc/vespene
 
 # apply database tables
 # this only has to be run once but won't hurt anything by doing
 # it more than once. You also need this step during upgrades.
 cd /opt/vespene
-$PYTHON manage.py migrate
+$APP_SUDO $PYTHON manage.py migrate
 

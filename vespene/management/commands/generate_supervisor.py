@@ -62,7 +62,7 @@ class Command(BaseCommand):
         parser.add_argument('--workers', type=str, help="what workers to run?")
         parser.add_argument('--executable', type=str, help="python executable")
         parser.add_argument('--source', type=str, help='source')
-        parser.add_argument('--gunicorn", type=str, help='gnuicorn options string', default='--bind 127.0.0.1:8000"
+        parser.add_argument('--gunicorn', type=str, help='gnuicorn options string', default='--bind 127.0.0.1:8000')
 
     def handle(self, *args, **options):
 

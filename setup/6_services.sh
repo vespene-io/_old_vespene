@@ -11,17 +11,30 @@
 # ---------------------------------------------------------------------------
 
 # load common config settings
+
 source ./0_common.sh
 
-mkdir -p /var/log/vespene
-
+# ---
 # generate the supervisor configuration
+
 echo "generating supervisor config..."
 cd /opt/vespene
-$PYTHON manage.py generate_supervisor --path /etc/vespene/supervisord.conf --workers "$WORKER_CONFIG" --executable=$PYTHON --source /opt/vespene --gunicorn "$GUNICORN_OPTS"
+sudo $PYTHON manage.py generate_supervisor --path /etc/vespene/supervisord.conf --workers "$WORKER_CONFIG" --executable=$PYTHON --source /opt/vespene --gunicorn "$GUNICORN_OPTS"
 echo "creating init script..."
+sudo chown -R $APP_USER /etc/vespene/
+
+# --
+# bail if on a Mac
+if [ "$DISTRO" == "MacOS" ]; then
+   echo "launch supervisor with: supervisord -n c /etc/vespene/supervisord.conf"
+   exit 0
+fi
+
+
+# ---
 # generate systemd init script
-cat > /etc/systemd/system/vespene.service << 'END_OF_SYSTEMD'
+
+sudo tee -a /etc/systemd/system/vespene.service </dev/null<<END_OF_SYSTEMD
 [Unit]
 Description=Vespene Services
 Documentation=http://vespene.io
@@ -34,6 +47,7 @@ ExecReload=/usr/bin/supervisorctl -c /etc/vespene/supervisord.conf $OPTIONS relo
 KillMode=process
 Restart=on-failure
 RestartSec=50s
+User=${APP_USER}
 
 [Install]
 WantedBy=multi-user.target
@@ -41,8 +55,8 @@ END_OF_SYSTEMD
 
 echo "starting the service..."
 # start the service
-systemctl daemon-reload
-systemctl start vespene.service
-systemctl enable vespene.service
+sudo systemctl daemon-reload
+sudo systemctl start vespene.service
+sudo systemctl enable vespene.service
 
 echo "Vespene is now running on port 8000 and also running workers: $WORKER_CONFIG"

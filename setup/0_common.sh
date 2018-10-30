@@ -36,25 +36,45 @@ BUILDROOT="/tmp/vespene"
 # WORKER_CONFIG="general=2 tutorial-pool=1"
 WORKER_CONFIG="tutorial-pool=1"
 
+# how do you need to sudo to run the python management commands?
+APP_SUDO="sudo"
+
+# how do you need to sudo to run postgresql management commands?
+POST_SUDO="sudo -u postgres"
+
+# what filesystem user should own the postgresql data directory?
+DB_USER="postgres"
+
+# what user should be running Vespene itself?
+APP_USER="vespene"
+
 # rough OS detection for now; patches accepted!
 if [ "$OSTYPE" == "linux-gnu" ]; then
    if [ -f /etc/redhat-release ]; then
+      echo "detected RHEL/CentOS"
       DISTRO="redhat"
       PIP="/usr/local/bin/pip3.6"
       PYTHON="/usr/bin/python3.6"
    elif [ -f /usr/bin/apt ]; then
+      echo "detected Ubuntu/Debian"
       DISTRO="ubuntu"
       PYTHON="/usr/bin/python3"
       PIP="/usr/bin/pip3"
    elif [ -f /usr/bin/pacman ]; then
+      echo "detected Arch"
       DISTRO="archlinux"
       PYTHON="/usr/bin/python"
       PIP="/usr/bin/pip"
    fi
 elif [ -f /usr/local/bin/brew ]; then
+      echo "detected MacOS"
       DISTRO="MacOS"
       PYTHON="/usr/local/bin/python3"
       PIP="/usr/local/bin/pip3"
+      APP_SUDO=""
+      POST_SUDO=""
+      DB_USER=`whoami`
+      APP_USER=`whoami`
 else
    echo "this OS may work with Vespene but we don't have setup automation for this just yet"
    DISTRO="?"

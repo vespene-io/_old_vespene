@@ -10,4 +10,5 @@ source ./0_common.sh
 
 # run the django management command (this is interactive)
 cd /opt/vespene
-$PYTHON manage.py createsuperuser
+
+$APP_SUDO $PYTHON manage.py createsuperuser
