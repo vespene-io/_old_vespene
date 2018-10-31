@@ -32,7 +32,7 @@ to make this more understandable are very welcome.
 Ready to start trying out Vespene?
 
 You are encouraged to read the scripts before you run them (please do!), as they are very simple and short, and include
-some comments.  As you read them, you'll understand more about Vespene's architecture and files are important to it.
+some comments.  As you read them, you'll understand more about Vespene's architecture and which files are important to it.
 
 Vespene likes to put files in the following places::
 
@@ -108,7 +108,7 @@ It is important to be aware that this configuration you are editing now is just 
 lives in /etc/vespene. These setup scripts will be configuring some settings in /etc/vespene
 with your choices. There are some defaults that ship with the application (like :ref:`plugins`) that are completely skipped by this
 setup process, and you'll want to read up on those later once you have things working. You'll get Vespene with a minimal plugin
-configuration that should work for leaning the tool, but that you might want to customize later.
+configuration that should work for learning the tool, but that you might want to customize later.
 
 Unless you wish to re-run these scripts, you won't be editing this setup script again.
 
