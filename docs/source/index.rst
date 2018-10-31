@@ -43,7 +43,7 @@ Helping with the self-service magic, projects can ask interactive questions befo
 Continuous Integration
 ======================
 
-Vespene features :ref:`pipelines` to construct complex CI/CD topologies - successful builds can trigger other builds, in serial or parallel.  Unlike some other CI tools, pipelines in Vespene are easily and graphically configured, and there is no custom DSL ("Domain Specific Language") to learn and debug. Use pipelines to implement fully automated deployment to production, or just stop at staging - whatever you feel comfortable with.
+Vespene features :ref:`pipelines` to construct complex CI/CD topologies - successful builds can trigger other builds, in serial or parallel.  Pipelines in Vespene are easily graphically configured, or membership can be defined by declarative .vespene files in YAML. There is no custom DSL ("Domain Specific Language") to learn and debug. Use pipelines to implement fully automated deployment to production, or just stop at staging - whatever you feel comfortable with.
 
 Admin-Focused
 =============
