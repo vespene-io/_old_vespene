@@ -33,6 +33,8 @@ BUILDROOT="/tmp/vespene"
 # worker pool name (configured in the Vespene UI) and the value is the number of copies 
 # of that worker to run. Increasing the number increases parallelism.
 
+DISTRO="?"
+
 # WORKER_CONFIG="general=2 tutorial-pool=1"
 WORKER_CONFIG="tutorial-pool=1"
 

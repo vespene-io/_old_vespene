@@ -34,6 +34,7 @@ echo "Cloning the project into /opt/vespene..."
 rm -rf /opt/vespene/*
 sudo cp -a ../* /opt/vespene
 
+echo "APP_USER=$APP_USER"
 sudo chown -R $APP_USER /opt/vespene
 sudo chown -R $APP_USER /var/spool/vespene
 sudo chown -R $APP_USER /etc/vespene/settings.d/

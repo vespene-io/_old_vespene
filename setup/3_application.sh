@@ -17,7 +17,7 @@ echo $PYTHON
 sudo $PYTHON manage.py generate_secret
 
 # application database config
-sudo tee -a /etc/vespene/settings.d/database.py >/dev/null <<END_OF_DATABASES
+sudo tee /etc/vespene/settings.d/database.py >/dev/null <<END_OF_DATABASES
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -32,7 +32,7 @@ END_OF_DATABASES
 
 
 # worker configuration settings
-sudo tee -a /etc/vespene/settings.d/workers.py >/dev/null << END_OF_WORKERS
+sudo tee /etc/vespene/settings.d/workers.py >/dev/null << END_OF_WORKERS
 BUILD_ROOT="$BUILD_ROOT"
 # FILESERVING_ENABLED = True
 # FILESERVING_PORT = 8000
@@ -40,7 +40,7 @@ BUILD_ROOT="$BUILD_ROOT"
 END_OF_WORKERS
 
 # ui settings
-sudo tee -a /etc/vespene/settings.d/interface.py >/dev/null << END_OF_INTERFACE
+sudo tee /etc/vespene/settings.d/interface.py >/dev/null << END_OF_INTERFACE
 BUILDROOT_WEB_LINK="$BUILDROOT_WEB_LINK"
 END_OF_INTERFACE
 

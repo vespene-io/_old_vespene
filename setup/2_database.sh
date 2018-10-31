@@ -9,12 +9,14 @@
 source ./0_common.sh
 
 # ---
-echo "installing packages..."
+echo "installing packages ..."
+CONFIG=""
+
 # install postgresql
 if [[ "$DISTRO" == "redhat" ]]; then
    sudo yum -y install postgresql-server
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
-elif [[ "$IDSTRO" == "ubuntu" ]]; then
+elif [[ "$DISTRO" == "ubuntu" ]]; then
    sudo apt install -y postgresql postgresql-contrib
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"
 elif [[ "$DISTRO" == "archlinux" ]]; then
@@ -31,23 +33,25 @@ if [[ "$DISTRO" == "archlinux" ]]; then
     sudo -u postgres initdb -D '/var/lib/postgres/data'
 elif [[ "$DISTRO" == "MacOS" ]]; then
     initdb /usr/local/var/postgres
+elif [[ "$DISTRO" == "redhat" ]]; then
+    echo "FIXME: initdb?"
 else
-    sudo -u postgres postgresql-setup initdb
+    echo "initdb should not be needed on this platform"
 fi
 
 # ----
-echo "configuring security at $CONFIG..."
+echo "configuring security at ${CONFIG} ..."
 
 # configure PostgreSQL security to allow the postgres account in locally, and allow
 # password access remotely.  You can tweak this if you want but must choose something
 # that will work with the /etc/vespene/settings.d/database.py that will be created.
 # Using password auth is highly recommended as the workers also use database access.
-sudo tee -a $CONFIG > /dev/null <<END_OF_CONF
+sudo tee $CONFIG > /dev/null <<END_OF_CONF
 local	all	${DB_USER}	ident
 host	all	all	0.0.0.0/0	md5
 END_OF_CONF
 
-chown $DB_USER $CONFIG
+sudo chown $DB_USER $CONFIG
 
 # ---
 echo "starting postgresql..."
