@@ -22,7 +22,7 @@ bad configurations may block builds for longer than you would like.
 Your setup (per instructions) should first and foremost always execute workers with "ssh-agent".  If this is done,
 SSH keys attached to the project will be used when checking out the project.
 
-If the repo is not publically readable, check to make sure you have configured either a service login (for http or https URLs)
+If the repo is not publicly readable, check to make sure you have configured either a service login (for http or https URLs)
 or an SSH key (for those that are not) on any project that is encountering problems.
 
 If you provide a SSH key that is locked but it does not have a valid unlock password provided, the build will also take a while
@@ -31,8 +31,8 @@ before automatically failing.
 I see some error in the worker logs but don't have enough information
 ---------------------------------------------------------------------
 
-The logs the worker normally outputs to standard out/error are consumed auotmatically by supervisord and stored in 
-/var/log/vespene.  However, these logs are not neccessarily very verbose.
+The logs the worker normally outputs to standard out/error are consumed automatically by supervisord and stored in
+/var/log/vespene.  However, these logs are not necessarily very verbose.
 
 Build output is available by clicking on the build object in the web interface, or by looking at the physical log in
 the build working directory.
@@ -125,7 +125,7 @@ those URLs on a different URL space at this point.
 How is Windows support?
 -----------------------
 
-I think this was mentinoed a few times in the docs, but we really haven't made any efforts to make this system support Windows yet.
+I think this was mentioned a few times in the docs, but we really haven't made any efforts to make this system support Windows yet.
 
 However, most changes are related to paths and such, and if reasonably abstracted and clean, we're quite open to patches
 that would add Windows support and would encourage them.

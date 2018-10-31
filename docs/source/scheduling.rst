@@ -52,7 +52,7 @@ If not, the job will run when it can.
 If you would like scheduled jobs to run promptly, consider allocating extra workers to the worker pool.
 
 The setting "schedule_threshold" in project settings is there as a safeguard against extraneous scheduling.  For instance,
-if you want to run a project every 30 minutes, but a build occured 10 minutes ago triggered by a pipeline that was ultimately triggered
+if you want to run a project every 30 minutes, but a build occurred 10 minutes ago triggered by a pipeline that was ultimately triggered
 by a CI/CD webhook, you might not need to run a new build.  The default schedule_threshold is 10 minutes.  We don't recommend
 reducing it, but you may want to increase it to thirty (30) minutes or so to prevent infrastructure churn in some scenarios.
 

@@ -40,7 +40,7 @@ There are a few exceptions. Only superusers are allowed to create and edit worke
 Also, no users can create or delete Build history objects via the interface.  There is a CLI command to remove old build records and directories that
 admins can run, perhaps on cron, to clean up old records.
 
-With the ownership plugin, it is not required to be able to edit a project to run a project. Additionally, on a project, "launch groups" can be specified in the onwership tab, granting access to start a project build or job
+With the ownership plugin, it is not required to be able to edit a project to run a project. Additionally, on a project, "launch groups" can be specified in the ownership tab, granting access to start a project build or job
 execution without having the ability to edit that particular project.  This works particularly well with :ref:`launch_questions` to
 implement a self-service console for executing tasks.
 
@@ -59,7 +59,7 @@ To enable greater filtering, the plugin configuration can be adjusted::
     )
 
 The filter_view parameter is designed to make lists more compact (for example, in environments with hundreds of projects), but is not designed
-to keep project configurations or user/team existance secret.  Transparency in an organization is a good thing anyway.
+to keep project configurations or user/team existence secret.  Transparency in an organization is a good thing anyway.
 
 We expect the vast majority of all Vespene users will want to leave the ownership plugin engaged.
 

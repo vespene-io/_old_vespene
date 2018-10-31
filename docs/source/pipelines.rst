@@ -30,7 +30,7 @@ As an example scenario, a Vespene admin such as yourself may create the followin
    * Deploy
 
 "Stage" is an unfortunately confusing for a name of a stage.  In the industry, we often mean "Stage" to refer to a staging environment that
-simulates production as "stage".  When we say "Vespene stage" here, we mean a pipeline *step*, like each stage of a rocket seperation.
+simulates production as "stage".  When we say "Vespene stage" here, we mean a pipeline *step*, like each stage of a rocket separation.
 
 Ok, so, if you ran the "tutorial_setup" command mentioned in the :ref:`tutorial`, you already have
 some stage names set up.  If not, you'll need to make some by going into the Stage tab as a superuser and adding some.

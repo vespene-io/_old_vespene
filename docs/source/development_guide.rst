@@ -72,7 +72,7 @@ A few small rules:
 Javascript & Static File Changes
 --------------------------------
 
-* application specific javascript is in vespene.js - there isn't a lot
+* Application specific javascript is in vespene.js - there isn't a lot
 * Right now there is a very small amount of javascript because the UI is still form based. This may not stay that way but was good for a start.
 * Be sure to run "python manage.py collectstatic" or changes you make in your editor won't be served up by Django
 * All dependencies must be vendored - we want to enable Vespene to work on closed networks - so no CDNs.

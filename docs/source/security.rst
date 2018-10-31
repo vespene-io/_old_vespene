@@ -45,7 +45,7 @@ While not a security consideration per se, the admin view allows direct database
 a large amount of business logic in the application.  Editing in the admin view should almost never
 happen, though it is ok to use the admin view to delete objects.
 
-If you want to discourage users from manually editing database results, it may be adviseable to disable
+If you want to discourage users from manually editing database results, it may be advisable to disable
 the Django admin view in settings.
 
 Superusers in the main application will still have full access.
@@ -75,16 +75,16 @@ No Multi-tenancy
 
 Vespene was intentionally NOT designed for multi-tenancy between potentially competing organizations.
 
-Instead install a seperate isolated Vespene for each organization.
+Instead install a separate isolated Vespene for each organization.
 
 While this is technically possible to do, it would be a huge time-suck and bloat the code in ways we'd rather
-not deal with it, and would likely not be something 99% of users would use. Instead, deploy a seperate
+not deal with it, and would likely not be something 99% of users would use. Instead, deploy a separate
 Vespene cluster for each tenant if you want to accomplish that level of organizational isolation.
 
 Secret Encryption and the Database
 ----------------------------------
 
-As mentioned earlier, the default configuration for Vespene uses symetric encryption to keep from storing
+As mentioned earlier, the default configuration for Vespene uses symmetric encryption to keep from storing
 SSH keys, unlock passwords, and SCM logins in raw plaintext.  The key to unlock these passwords is in /etc/vespene/settings.d/secrets.py
 and must be available on all machines in the cluster.
 
@@ -142,13 +142,13 @@ In the stock configuration any user can create any number of objects, because we
 are employees who have important business reasons for accessing the service.  While they cannot edit objects they do not have
 rights to, it does mean granting access to 3000 people to create projects could result in a degree of disorganization.
 
-It is certaintly true that a user who can create projects has, just like a user who has access to a source code repository,
+It is certainly true that a user who can create projects has, just like a user who has access to a source code repository,
 access to make the build system run certain commands in the environment where workers run.
 
 Limiting access to creation of certain types of objects to certain groups of users can be controlled with the "group_required"
 plugin.
 
-For instance, it might be redesirable to use the "group_required" plugin to only allow Developers, QA, and Ops to create projects
+For instance, it might be desirable to use the "group_required" plugin to only allow Developers, QA, and Ops to create projects
 in Vespene, while users in the "Support" pool may only be able to run jobs where they have been added to the launch group
 for that particular project.
 

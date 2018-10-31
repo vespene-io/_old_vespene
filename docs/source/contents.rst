@@ -8,7 +8,7 @@
    Tutorial <tutorial>
 
 .. toctree::
-   :caption: Fundmentals
+   :caption: Fundamentals
    :maxdepth: 1
 
    Workers <workers>

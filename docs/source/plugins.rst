@@ -132,7 +132,7 @@ When writing a new plugin, make sure the following cases are handled:
 * Checkouts of public content
 * Support for naming a branch to check out.
 * Checkouts of private content, using SSH keys and passwords stored in Vespene
-* Recording the lastest revision at checkout time.
+* Recording the latest revision at checkout time.
 * Checking out only the specified branch.
 * Recording the user who made the last repository change on the branch.
 
@@ -219,7 +219,7 @@ easily, if desired.
 All authorization plugins are run that are configured in settings - if checks pass for one plugin, they must pass
 for the rest of them before access to do something is granted.
 
-Because authorization policy is somewhat involved, discussion of this plugin has been moved to a seperate
+Because authorization policy is somewhat involved, discussion of this plugin has been moved to a separate
 documentation page, see :ref:`authz`.
 
 UI: Future

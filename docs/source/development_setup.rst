@@ -60,7 +60,7 @@ And now activate the virtualenv::
     source env/bin/activate
 
 Future commands you run while this virtualenv is active will automatically use the right python.
-If you start new terminal windows, don't forget to activate the virtualenv, or missing dependnecies
+If you start new terminal windows, don't forget to activate the virtualenv, or missing dependencies
 will cause errors to pop up.
 
 OS X Keychain
@@ -149,7 +149,7 @@ of which probably exists on your filesystem yet::
 
 These settings will also need to be copied to other workers if you are testing a multi-node setup.
 
-Also add an entry describing where the temporary build root should be for builds occuring on this system, perhaps in
+Also add an entry describing where the temporary build root should be for builds occurring on this system, perhaps in
 /etc/vespene/settings.d/workers.py::
 
     BUILD_ROOT = "/tmp/vespene/build_root"

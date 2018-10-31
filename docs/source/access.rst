@@ -30,14 +30,14 @@ Each key does require a private key upload, as well as an unlock password if the
 
 The contents of the keys do not have to be shared with users who can access the Vespene UI, but they can still use them when launching the project.
 
-SSH keys uploaded *ARE* private keys, which are stored using Vespene encryption plugins in the database. 
+SSH keys uploaded *ARE* private keys, which are stored using Vespene encryption plugins in the database.
 
 Build isolation as described in :ref:`workers` is used to prevent the build scripts from accessing the database.  As described in more detail in 
 :ref:`security`, SSH keys given to Vespene should be deploy keys exclusively used by the Vespene system only, and frequently rotated. Key management
-may be modified in a future release. Keys given to Vespene should be unique for the purpose of use *by* Vespene to enable easy rotation.
+may be modified in a future release. For improved security, keys given to Vespene should be unique for the purpose of use *by* Vespene to enable easy rotation.
 
 To use SSH keys it is required that workers are started wrapped with the 'ssh-agent' process, as described in :ref:`workers` and this is done automatically
-if you generate Vespene's supervisor config as according to the :ref:`setup` instructions.
+if you generate Vespene's supervisor config according to the :ref:`setup` instructions.
 
 Also note that there is no differentiation between SSH keys provided for access to a SCM or a machine, both are available for both purposes. If this is concerning,
 provide dedicated keys for specific purposes.
@@ -49,14 +49,12 @@ Service Logins
 
 Service Logins are sets of usernames and passwords that can be used to access source control repositories.
 
-The system will not share the passwords used, but they are made available to multiple users.
+The system will not share the passwords used, but Service Logins are made available to multiple users.
 
 For source control systems that also work with SSH keys, like git, these can also be ignored in favor of :ref:`ssh`.
 
-At this time, Service Logins are *only* used during git checkouts and Subversion requires a publically accessible repo.  Updates to these
+At this time, Service Logins are *only* used during git checkouts and Subversion currently requires a publicly accessible repo.  Updates to these
 behaviors are welcome contributions.
 
 These passwords are not yet marked by a particular service, for instance they can't be used for cloud API logins or something like that.  This could
 also be implemented in the future.
-
-

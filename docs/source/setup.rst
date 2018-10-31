@@ -212,7 +212,7 @@ One minor gotcha is that we didn't know in advance if you wanted to install the 
 same box as the Vespene services, so the Vespene services don't normally have a startup dependency on the
 database.  You can add this by editing the systemd unit file.
 
-If the service is not operational on reboot because PostgreSQL was not ready, just restart "vespene.service" using "systemctl restart vespene.serve".
+If the service is not operational on reboot because PostgreSQL was not ready, just restart "vespene.service" using "systemctl restart vespene.service".
 
 Developers can learn about starting workers and the web process in :ref:`development_setup` and many systems
 administrators will also benefit from understanding this as well. In short, supervisord runs and watches over

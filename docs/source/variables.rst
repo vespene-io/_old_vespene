@@ -57,7 +57,7 @@ In a build script, you can access any variables using Jinja2 syntax, like so::
 A great deal of Jinja2 syntax is available, see the Jinja2 website for details.  In short, you can do things like this::
 
    {% if mode == "turbo" %}
-      sh go.sh --install-unilaterial-phase-detractors --hydrocoptic-marvelzanes={{ marvelzane_count }}
+      sh go.sh --install-unilateral-phase-detractors --hydrocoptic-marvelzanes={{ marvelzane_count }}
    {% endif %}
 
 There are also loops.  
@@ -76,7 +76,7 @@ Snippets in Vespene are variables whose values are chunks of text that are thems
 These are created as top level objects, so it's easy for one group to maintain a component of a build
 instruction used by multiple other groups.
 
-Sippets are loaded in a build script in exactly the same way as variables.  In the following example, a build script
+Snippets are loaded in a build script in exactly the same way as variables.  In the following example, a build script
 pulls in two snippets named "common_setup" and "security_scan"::
 
    {{ common_setup }}
@@ -152,7 +152,7 @@ you just think of the places variables should go:
 
 The whole variable precedence system is pluggable, so you can rearrange the rules or even add new
 variable plugins to pull in variables from external sources.  However, if you do rearrange the policy, let us know when filing any tickets or talking about it, otherwise we'll assume
-your configuration is set up stock like everyone elses.
+your configuration is set up stock like everyone else's.
 
 We hope you enjoy organizing your builds with the variable subsystem.
 
