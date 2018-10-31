@@ -20,7 +20,7 @@ elif [ "$DISTRO" == "MacOS" ]; then
 fi
 
 if [ "$DISTRO" != "MacOS" ]; then
-    adduser vespene
+    sudo adduser vespene
 fi
 
 echo "Setting up directories..."

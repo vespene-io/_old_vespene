@@ -51,7 +51,7 @@ DB_USER="postgres"
 APP_USER="vespene"
 
 # rough OS detection for now; patches accepted!
-if [ "$OSTYPE" == "linux-gnu" ]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
    if [ -f /etc/redhat-release ]; then
       echo "detected RHEL/CentOS"
       DISTRO="redhat"
@@ -80,4 +80,10 @@ elif [ -f /usr/local/bin/brew ]; then
 else
    echo "this OS may work with Vespene but we don't have setup automation for this just yet"
    DISTRO="?"
+fi
+
+me=`whoami`
+if [[ "$m1e" == "root" ]]; then
+    echo "*** please re-run this script from a user account with sudo rights"
+    exit 1
 fi
