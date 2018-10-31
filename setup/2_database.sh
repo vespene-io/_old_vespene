@@ -16,6 +16,9 @@ CONFIG=""
 if [[ "$DISTRO" == "redhat" ]]; then
    sudo yum -y install postgresql-server
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
+elif [[ "$DISTRO" == "opensuse" ]]; then
+   zypper install -y postgresql-server postgresql-contrib
+   CONFIG="/var/lib/pgsql/data/pg_hba.conf"
 elif [[ "$DISTRO" == "ubuntu" ]]; then
    sudo apt install -y postgresql postgresql-contrib
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"
@@ -35,6 +38,8 @@ elif [[ "$DISTRO" == "MacOS" ]]; then
     initdb /usr/local/var/postgres
 elif [[ "$DISTRO" == "redhat" ]]; then
     sudo -u postgres postgresql-setup initdb
+elif [[ "$DISTRO" == "opensuse" ]]; then
+    sudo -u postgres initdb -D '/var/lib/pgsql/data/'
 else
     echo "initdb should not be needed on this platform"
 fi

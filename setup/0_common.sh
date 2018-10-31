@@ -57,6 +57,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
       DISTRO="redhat"
       PIP="/usr/local/bin/pip3.6"
       PYTHON="/usr/bin/python3.6"
+   elif [ -f /usr/bin/zypper ]; then
+      echo "detected openSUSE"
+      DISTRO="opensuse"
+      PYTHON="/usr/bin/python3"
+      PIP="/usr/bin/pip3"
    elif [ -f /usr/bin/apt ]; then
       echo "detected Ubuntu/Debian"
       DISTRO="ubuntu"

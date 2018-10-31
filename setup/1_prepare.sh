@@ -9,6 +9,10 @@ if [ "$DISTRO" == "redhat" ]; then
     sudo yum -y install epel-release
     sudo yum -y install gcc python36 python36-devel postgresql supervisor
     sudo python36 -m ensurepip
+elif [ "$DISTRO" == "opensuse" ]; then
+    zypper refresh
+    zypper install -y gcc python python-pip python3 python3-pip python3-setuptools postgresql
+    python2.7 -m pip install supervisor
 elif [ "$DISTRO" == "ubuntu" ]; then
     sudo apt-add-repository universe
     sudo apt-get update
@@ -20,7 +24,7 @@ elif [ "$DISTRO" == "MacOS" ]; then
 fi
 
 if [ "$DISTRO" != "MacOS" ]; then
-    sudo adduser vespene
+    sudo useradd vespene
 fi
 
 echo "Setting up directories..."
