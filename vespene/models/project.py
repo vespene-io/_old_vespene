@@ -56,7 +56,7 @@ class Project(models.Model, BaseModel):
     variable_sets = models.ManyToManyField('VariableSet', related_name='projects', blank=True)
     launch_questions = models.TextField(null=False, default="[]", help_text="JSON. See project docs for spec.")
 
-    scm_login = models.ForeignKey('ServiceLogin', related_name='projects', on_delete=models.SET_NULL, null=True, help_text="... or add an SSH key in the SSH tab", blank=True)
+    scm_login = models.ForeignKey('ServiceLogin', related_name='projects', on_delete=models.SET_NULL, null=True, help_text="... or leave this blank add an SSH key", blank=True)
     ssh_keys = models.ManyToManyField('SshKey', related_name='projects', blank=True, help_text="ssh-add these keys before the checkout starts")
 
     worker_pool = models.ForeignKey('WorkerPool', related_name='projects', null=False, on_delete=models.PROTECT, help_text="where should this build be run?")
