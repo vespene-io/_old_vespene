@@ -15,7 +15,7 @@ Features
 * A horizontally-scalable architecture built on Python, Django, and PostgreSQL
 * A well-organized, straight-forward user interface
 * Distributed workers
-* Built-in graphically-configured CI/CD pipelines - no DSLs to learn
+* Built-in pipelines - no DSLs to learn, use .vespene YAML or set them up graphically
 * SSH-agent integration lending script access to encrypted SSH keys
 * A flexible variable system with Jinja2 templating and integration with any tool that can consume YAML/JSON
 * Webhooks and scheduled builds
