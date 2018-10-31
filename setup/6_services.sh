@@ -34,17 +34,16 @@ fi
 # ---
 # generate systemd init script
 
-sudo tee /etc/systemd/system/vespene.service </dev/null <<END_OF_SYSTEMD
+sudo tee /etc/systemd/system/vespene.service >/dev/null <<END_OF_SYSTEMD
 [Unit]
 Description=Vespene Services
 Documentation=http://vespene.io
 After=postgresql.service
 
 [Service]
-Type=Simple
 ExecStart=/usr/bin/supervisord -n -c /etc/vespene/supervisord.conf
-#ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
-#ExecReload=/usr/bin/supervisorctl -c /etc/vespene/supervisord.conf $OPTIONS reload
+ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
+ExecReload=/usr/bin/supervisorctl -c /etc/vespene/supervisord.conf $OPTIONS reload
 KillMode=process
 Restart=on-failure
 RestartSec=50s

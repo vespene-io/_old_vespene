@@ -34,7 +34,7 @@ if [[ "$DISTRO" == "archlinux" ]]; then
 elif [[ "$DISTRO" == "MacOS" ]]; then
     initdb /usr/local/var/postgres
 elif [[ "$DISTRO" == "redhat" ]]; then
-    echo "FIXME: initdb?"
+    sudo -u postgres postgresql-setup initdb
 else
     echo "initdb should not be needed on this platform"
 fi
