@@ -26,7 +26,7 @@ class Plugin(object):
     def get_handle(self, organization):
         scm_login = organization.scm_login
         if organization.api_endpoint:
-            g = GitHub(scm_login.username, scm_login.password(), base_url=organization.api_endpoint)
+            g = Github(scm_login.username, scm_login.password(), base_url=organization.api_endpoint)
         else:
             g = Github(scm_login.username, scm_login.get_password())
         return g
