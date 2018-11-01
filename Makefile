@@ -14,7 +14,7 @@ html:
 	(cd docs; make html)
 
 docs_publish:
-	cp -a docs/build/html/* ../vespene.github.io/
+	cp -a docs/build/html/* ../vespene-io.github.io/
 
 indent_check:
 	pep8 --select E111 vespene/
