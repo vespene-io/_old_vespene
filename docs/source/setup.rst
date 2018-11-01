@@ -108,7 +108,7 @@ result in configurations (ultimately) in /etc/vespene. If you ignore most of thi
 database password and don't just use the default, but the other settings are pretty good
 starting choices::
 
-	# vim 0_common.sh
+	$ vim 0_common.sh
 
 Note the database address you chose in this file. If you plan to use an external database, 
 name that hostname now, and keep that in mind when you get to the database setup step a bit later on. 
@@ -134,9 +134,9 @@ Once installed, Vespene will reside in /opt/vespene and settings will be in /etc
 
 Run the requirements setup script as follows::
 
-	# bash 1_prepare.sh
+	$ bash 1_prepare.sh
 
-If you are not root, you'll need to run these with sudo.
+Run these under a user account that has sudo access, as the install scripts will invoke sudo.
 
 Database Setup
 --------------
@@ -148,7 +148,7 @@ a database on this server is quite reasonable.
 
 To run the script to install the database::
 
-	# bash 2_database.sh
+	$ bash 2_database.sh
 
 If you are intending to deploy a multi-node environment, setup is on your own, just
 make a database available at the server address and username/password you selected in "Step 0".
@@ -159,7 +159,7 @@ Application Setup
 This next step will configure the application to point at the Vespene database and 
 run any database migrations that may be required during an upgrade::
 
-	# bash 3_application.sh
+	$ bash 3_application.sh
 
 This step will have generated some secrets in /etc/vespene/settings.d/secrets.py. IMPORTANT: If you are performing
 a multi-site install, you will need to copy this file to all machines in the Vespene cluster *prior*
@@ -172,7 +172,7 @@ Superuser
 
 Once and only once per cluster, you need to run the superuser configuration step::
 
-	# bash 4_superuser.sh
+	$ bash 4_superuser.sh
 
 This will interactively prompt you for a username and password for the superuser account.  This is the
 account you will use to to login to Vespene for the very first time, so remember what password you
@@ -187,7 +187,7 @@ Vespene is now mostly installed, but if you were to log in, there's not a lot co
 initially seeing a blank screen might not give users the best initial experience, so the next command
 will create some basic objects for learning Vespene::
 
-	# bash 5_tutorial.sh
+	$ bash 5_tutorial.sh
 
 .. _supervisor:
 
@@ -200,13 +200,13 @@ a systemd unit file that starts a series of supervisor processes configured in /
 You will automatically get a copy of the webserver and also any worker processes configured in 0_common.sh
 will also be added to the supervisor config.
 
-	# bash 6_services.sh
+	$ bash 6_services.sh
 
 If you ever want to change how many worker processes run on each node (and which ones), you
 can just edit the common configuration and rerun this step on that particular node::
 
-	# vi 0_common.sh
-	# bash 6_services.sh
+	$ vi 0_common.sh
+	$ bash 6_services.sh
 
 You could of course also edit the supervisor config directly in /etc/supervisord and then restart the
 "vespene.service" systemd service.
