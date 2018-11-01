@@ -12,10 +12,11 @@ While new, Vespene is growing quickly. All ideas for improvement are fair game!
 Features
 ========
 
-* A horizontally-scalable architecture built on Python, Django, and PostgreSQL
+* A horizontally-scalable, highly-available architecture built on Python, Django, and PostgreSQL
 * A well-organized, straight-forward user interface
 * Distributed workers
-* Built-in pipelines - no DSLs to learn, use .vespene YAML or set them up graphically
+* Declarative configuration via .vespene files (optional)
+* Built-in pipelines - no DSLs to learn, use easy .vespene YAML or set them up graphically
 * SSH-agent integration lending script access to encrypted SSH keys
 * A flexible variable system with Jinja2 templating and integration with any tool that can consume YAML/JSON
 * Webhooks and scheduled builds
@@ -42,6 +43,26 @@ Documentation
 
 For more on usage, capabilities, and setup, see [docs.vespene.io](http://docs.vespene.io).
 
+Requirements
+============
+
+The Vespene code requires one or more Linux or Unix environments that can run Python 3, 
+and a PostgreSQL server, which we can help you install.
+
+Install automation is provided for the following platforms:
+
+* Ubuntu LTS distributions
+* CentOS 7 or RHEL 7
+* Arch Linux
+* OS X
+
+Automation for other install types are being added frequently.
+
+Installation Instructions
+=========================
+
+The setup guide is [here](http://docs.vespene.io/setup.html).
+
 Forum & GitHub
 ==============
 
@@ -54,12 +75,9 @@ License
 =======
 
 The purpose of the Vespene community is come together to produce great software we can all use and share. 
-Michael DeHaan LLC (project leadership) does not produce commercial software around Vespene, paid plugins, or offer consulting, support, or 
-hosting services around Vespene of any kind. There are no customer-only enterprise branches; everything is public and open for everyone.
+Michael DeHaan LLC (project leadership) does not produce commercial software around Vespene, paid plugins, or offer consulting, support, or hosting services around Vespene of any kind. There are no customer-only enterprise branches; everything is public and open for everyone.
 
-Accordingly, Vespene is licensed with the Apache 2.0 license with the Commons Clause restriction, which means that you cannot charge for the
-software in any way without approval from Michael DeHaan LLC, and this includes paid consulting, support, or hosting services. To do these
-things, you can join the Vespene Partner Program - for small organizations, membership is completely free once approved. You can read more at 
+Accordingly, Vespene is licensed with the Apache 2.0 license with the Commons Clause restriction, which means that you cannot charge for the software in any way without approval from Michael DeHaan LLC, and this includes paid consulting, support, or hosting services. To do these things, you can join the Vespene Partner Program - for small organizations, membership is completely free once approved. You can read more at 
 [docs.vespene.io/partnership.html](http://docs.vespene.io/partnership.html).
 
 Author
