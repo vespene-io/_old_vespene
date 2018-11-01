@@ -11,10 +11,9 @@ Setup
 
 Thanks for the interest in setting up Vespene!  
 
-To start, Vespene is a Python-based application.
+To start, Vespene is a Python application. It is implemented using the Django web-framework on the frontend, and supervisord and 
+python worker daemons on the backend.  Both layers share a PostgreSQL database.
 
-At a technical level, it is implemented using the Django web-framework on the frontend, and supervisord and custom
-Python daemons (which also use Django code without the webserver) on the backend.  Both layers share a PostgreSQL database.
 You will not need to know anything about Django to run the application, but if you do know Django, the following instructions
 should be a bit familiar to you.
 
@@ -24,8 +23,10 @@ is supposed to be pretty easy - we've grown to dislike tools that take a long ti
 Some of your choices will come down to how you configure the plugins, but largely most Vespene installs should feel like any other
 Vespene install.  That's very important to us. 
 
-We also follow a "batteries included" approach to plugins, so as plugins are developed, 
-you won't have to hunt for what plugins work and don't work, and their particular needs and requirements. If you find the Vespene install
+Vespene ships with a fair number of plugins, which will grow over time. We follow a "batteries included" approach to plugins, so as plugins are developed, 
+you won't have to hunt for what plugins work and don't work, and their particular needs and requirements. 
+
+If you find the Vespene install
 instructions confusing or incomplete, please open a ticket on GitHub - it's important to us that we make this go as smoothly as we possibly can, and suggestions
 to make this more understandable are very welcome.
 
@@ -38,28 +39,38 @@ Vespene likes to put files in the following places::
 
     /opt/vespene
     /etc/vespene
-    /etc/vespene/settings.d
     /var/log/vespene
     /var/spool/vespene
     /tmp/vespene/
   
-If you like, you can skip our setup scripts and configure everything by hand (once you see what they do), or adapt them to use your favorite install automation - that is your choice. However, for the first time, we recommend trying the setup scripts.
+If you like, you can skip our setup scripts and configure everything by hand (once you see what they do), or adapt them 
+to use your favorite install automation - that is your choice. However, for the first time, we recommend trying the setup scripts.
 
 Is My Platform Supported?
 -------------------------
 
-Whether or not setup scripts are provided in the project, Vespene aims to be compatible with all Linux or Unix distributions.
-Where your favorite distros are not supported yet we absolutely take patches to add them.
+Vespene aims to be compatible with all Linux or Unix distributions.
 
-The only thing we clearly don't support yet is Windows. Windows worker support and automation will come in the near future. 
+The program already supports these, and where your favorite distros are not supported in the install scripts, 
+we absolutely take patches to add them.
+
+The setup scripts currently support:
+
+* Ubuntu LTS distributions
+* CentOS 7 and RHEL 7
+* Arch Linux
+* OS X (via homebrew)
+
+All setup processes except OS X will run under the 'vespene' account, except OS X, which will run as the user who installed
+it. You can either use an existing PostgreSQL server or one of the install scripts can help you install a new one.
+
+The only thing we clearly don't support yet is Windows. Windows worker support and automation will likely come in the near future. 
 If you are interested in working on Windows support, please let us know!
 
-For this first release, the "setup/" directory of a checkout includes setup scripts for CentOS7 and the latest Ubuntu LTS, which
-was "Bionic Beaver" at the time of writing this.
-
 Once you have the app running in production mode, you may wish to know how to work on it as a developer.
-For development setup instructions, see :ref:`development_setup`, which includes OS X development tips.
-Michael does a LOT of his development for Vespene on OS X and everything also works fine there.
+
+For developer setup instructions, see :ref:`development_setup`, which includes OS X developer tips. If you regularly develop
+on a Mac, skipping the install instructions and using the development instructions may be something you would like to do.
 
 Where To Run What
 -----------------
