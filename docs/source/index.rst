@@ -40,8 +40,8 @@ While not all automation tools are SSH-powered, many are. Vespene can memorize i
 
 Helping with the self-service magic, projects can ask interactive questions before they are launched with :ref:`launch_questions`, providing unprivileged users a simple interface to invoke specific tasks without needing full shell access. These questions can be drop-downs, multiple choice, or fill in the blank.
 
-Continuous Integration
-======================
+Pipelines
+=========
 
 Vespene features :ref:`pipelines` to construct complex CI/CD topologies - successful builds can trigger other builds, in serial or parallel.  Pipelines in Vespene are easily graphically configured, or membership can be defined by declarative .vespene files in YAML. There is no custom DSL ("Domain Specific Language") to learn and debug. Use pipelines to implement fully automated deployment to production, or just stop at staging - whatever you feel comfortable with.
 
