@@ -83,7 +83,7 @@ else
 fi
 
 me=`whoami`
-if [[ "$m1e" == "root" ]]; then
+if [[ "$me" == "root" ]]; then
     echo "*** please re-run this script from a user account with sudo rights"
     exit 1
 fi
