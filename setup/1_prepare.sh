@@ -6,9 +6,18 @@ echo "PIP=$PIP"
 
 echo "Installing core packages..."
 if [ "$DISTRO" == "redhat" ]; then
+    # this just covers CentOS for now
+    sudo yum -y install centos-release-scl
+    # on Red Hat
+    # sudo yum-config-manager --enable rhel-server-rhscl-7-rpms ?
     sudo yum -y install epel-release
-    sudo yum -y install gcc python36 python36-devel postgresql supervisor
+    sudo yum -y install gcc python36 python36-devel supervisor rh-postgresql10
     sudo python36 -m ensurepip
+    sudo tee /etc/profile.d/enable_pg10.sh >/dev/null << END_OF_PG10
+    #!/bin/bash
+    source scl_source enable rh-postgresql10
+END_OF_PG10
+    sudo chmod +x /etc/profile.d/enable_pg10.sh 
 elif [ "$DISTRO" == "ubuntu" ]; then
     sudo apt-add-repository universe
     sudo apt-get update

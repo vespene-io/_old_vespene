@@ -11,11 +11,13 @@ source ./0_common.sh
 # ---
 echo "installing packages ..."
 CONFIG=""
+PG_PREFIX=""
 
 # install postgresql
 if [[ "$DISTRO" == "redhat" ]]; then
-   sudo yum -y install postgresql-server
-   CONFIG="/var/lib/pgsql/data/pg_hba.conf"
+   # use software collections
+   PG_PREFIX="/opt/rh/rh-postgresql10/root/usr/bin/"
+   CONFIG="/var/opt/rh/rh-postgresql10/lib/pgsql/data/pg_hba.conf"
 elif [[ "$DISTRO" == "ubuntu" ]]; then
    sudo apt install -y postgresql postgresql-contrib
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"
@@ -34,7 +36,7 @@ if [[ "$DISTRO" == "archlinux" ]]; then
 elif [[ "$DISTRO" == "MacOS" ]]; then
     initdb /usr/local/var/postgres
 elif [[ "$DISTRO" == "redhat" ]]; then
-    sudo -u postgres postgresql-setup initdb
+    sudo -u postgres ${PG_PREFIX}postgresql-setup initdb
 else
     echo "initdb should not be needed on this platform"
 fi
@@ -53,12 +55,22 @@ END_OF_CONF
 
 sudo chown $DB_USER $CONFIG
 
+if [ "$DISTRO" == "redhat" ]; then
+   echo "creating symbolic links to libraries..."
+   sudo ln -s /opt/rh/rh-postgresql10/root/usr/lib64/libpq.so.rh-postgresql10-5 /usr/lib64/libpq.so.rh-postgresql10-5
+   sudo ln -s /opt/rh/rh-postgresql10/root/usr/lib64/libpq.so.rh-postgresql10-5 /usr/lib/libpq.so.rh-postgresql10-5
+fi
+
 # ---
 echo "starting postgresql..."
 if [ "$OSTYPE" == "linux-gnu" ]; then
-# start the PostgreSQL service using systemd
-    sudo systemctl enable postgresql.service
-    sudo systemctl start postgresql.service
+    if [ "$DISTRO" == "redhat" ]; then  
+        # run from software collections
+        sudo service rh-postgresql10-postgresql restart
+    else
+        sudo systemctl enable postgresql.service
+        sudo systemctl start postgresql.service
+    fi
 elif [ "$DISTRO" == "MacOS" ]; then
     /usr/local/bin/pg_ctl restart -D /usr/local/var/postgres/
 fi
@@ -67,11 +79,11 @@ fi
 echo "creating the vespene database and user..."
 echo "  (if you any errors from 'cd' here or further down they can be ignored)"
 
-EXISTS=`sudo -u $DB_USER psql -lqt | grep vespene`
+EXISTS=`sudo -u $DB_USER ${PG_PREFIX}psql -lqt | grep vespene`
 if [ $? -eq 1 ]; then
-   $POST_SUDO createdb vespene
+   $POST_SUDO ${PG_PREFIX}createdb vespene
    echo "creating the vespene user"
-   $POST_SUDO createuser vespene
+   $POST_SUDO ${PG_PREFIX}createuser vespene
 else
    echo "- database already exists"
 fi
@@ -79,5 +91,5 @@ fi
 # --
 echo "granting access..."
 # give the user access and set their password
-$POST_SUDO psql -d vespene -c "GRANT ALL on DATABASE vespene TO vespene"
-$POST_SUDO psql -d vespene -c "ALTER USER vespene WITH ENCRYPTED PASSWORD '$DBPASS'"
+$POST_SUDO ${PG_PREFIX}psql -d vespene -c "GRANT ALL on DATABASE vespene TO vespene"
+$POST_SUDO ${PG_PREFIX}psql -d vespene -c "ALTER USER vespene WITH ENCRYPTED PASSWORD '$DBPASS'"
