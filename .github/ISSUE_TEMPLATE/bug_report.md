@@ -12,4 +12,6 @@ about: Submit a bug report
 
 **Actual behavior**
 
+**Operating system and version**
+
 **Any additional info**
