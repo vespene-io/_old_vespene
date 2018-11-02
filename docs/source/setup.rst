@@ -56,15 +56,17 @@ we absolutely take patches to add them.
 
 The setup scripts currently support:
 
-* Ubuntu LTS distributions
-* CentOS 7 and RHEL 7
+* Ubuntu Bionic Beaver (18.04)
+* CentOS 7 (using software collections)
 * Arch Linux
 * OS X (via homebrew)
+
+If you are unsure of what platform to use or do not have a preference, Ubuntu Bionic Beaver (for production or development)  and OS X (for trying things out or development) are suggested.
 
 All setup processes except OS X will run under the 'vespene' account, except OS X, which will run as the user who installed
 it. You can either use an existing PostgreSQL server or one of the install scripts can help you install a new one.
 
-The only thing we clearly don't support yet is Windows. Windows worker support and automation will likely come in the near future. 
+The only thing we clearly don't run on yet is Windows. Windows worker support and automation will likely come in the possibly near future. 
 If you are interested in working on Windows support, please let us know!
 
 Once you have the app running in production mode, you may wish to know how to work on it as a developer.

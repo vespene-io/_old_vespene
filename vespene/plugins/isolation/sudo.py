@@ -81,8 +81,8 @@ class Plugin(object):
 
     def execute(self):
         self.build.append_message("----------\nBuilding...")
-        commands.execute_command(None, "chmod -R %s %s" % (self.chmod, self.build.working_dir), output_log=False, message_log=True)
-        commands.execute_command(None, "chmod a+x %s" % self.script_file_name, output_log=False, message_log=True)
+        commands.execute_command(self.build, "chmod -R %s %s" % (self.chmod, self.build.working_dir), output_log=False, message_log=True)
+        commands.execute_command(self.build, "chmod a+x %s" % self.script_file_name, output_log=False, message_log=True)
         if shutil.which('timeout'):
             timeout = "timeout %d " % (self.build.project.timeout * 60)
         else:
