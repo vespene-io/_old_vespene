@@ -82,7 +82,6 @@ class SshAgentManager(object):
         fh.close()
         LOG.debug(fname)
         LOG.debug(keyfile)
-        # FIXME: this should NOT be on True!!! self.build needs to be none!
-        commands.execute_command(None, "/usr/bin/expect -f %s" % fname)
+        commands.execute_command(self.build, "/usr/bin/expect -f %s" % fname, output_log=False, message_log=False)
         os.remove(fname)
         return fname
