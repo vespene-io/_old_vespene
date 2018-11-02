@@ -59,12 +59,12 @@ class SshAgentManager(object):
     def cleanup(self):
         # remove SSH identities
         LOG.debug("removing SSH identities")
-        commands.execute_command(self.build, "ssh-add -D")    
+        commands.execute_command(self.build, "ssh-add -D", log_command=False, message_log=False, output_log=False)    
 
     def ssh_add_without_passphrase(self, keyfile):  
         LOG.debug(keyfile)
         cmd = "ssh-add %s < /dev/null" % keyfile
-        commands.execute_command(None, cmd, env=None)
+        commands.execute_command(self.build, cmd, env=None, log_command=False, message_log=False, output_log=False)
 
     def ssh_add_with_passphrase(self, keyfile, passphrase):
         (_, fname) = tempfile.mkstemp()
