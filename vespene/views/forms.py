@@ -37,8 +37,12 @@ class BaseForm(forms.ModelForm):
         super(BaseForm, self).__init__(*args, **kwargs)
 
     def make_read_only(self):
+        template_names = ['django/forms/widgets/text.html', 'django/forms/widgets/textarea.html']
         for x in self.Meta.fields:
-            self.fields[x].widget.attrs['disabled'] = True
+            if self.fields[x].widget.template_name in template_names:
+                self.fields[x].widget.attrs['readonly'] = True
+            else:
+                self.fields[x].widget.attrs['disabled'] = True
         return self
 
 class StageForm(BaseForm):
