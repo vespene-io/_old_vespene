@@ -12,10 +12,6 @@ PLUGIN_SEARCH_PATH = [ ]
 SLACK_CHANNEL = "general"
 SLACK_TOKEN = "REPLACE-WITH-OAUTH-KEY"
 
-# used by certain autoscaling planning plugins
-AUTOSCALING_MIN_INSTANCES = 1
-AUTOSCALING_MAX_INSTANCES = 20
-
 PLUGIN_CONFIGURATION = dict(
 
     pre_triggers = OrderedDict(
