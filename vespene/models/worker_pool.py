@@ -14,9 +14,6 @@ from django.db import models
 from vespene.common.secrets import SecretsManager
 from vespene.models import BaseModel
 
-WP_SUCCESS = "SUCCESS"
-WP_FAILURE = "FAILURE"
-
 secrets = SecretsManager()
 
 class WorkerPool(models.Model, BaseModel):
