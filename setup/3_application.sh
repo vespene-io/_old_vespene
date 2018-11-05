@@ -33,7 +33,7 @@ END_OF_DATABASES
 
 # worker configuration settings
 sudo tee /etc/vespene/settings.d/workers.py >/dev/null << END_OF_WORKERS
-BUILD_ROOT="$BUILD_ROOT"
+BUILD_ROOT="${BUILDROOT}"
 # FILESERVING_ENABLED = True
 # FILESERVING_PORT = 8000
 # FILESERVING_HOSTNAME = "this-server.example.com"
@@ -41,7 +41,7 @@ END_OF_WORKERS
 
 # ui settings
 sudo tee /etc/vespene/settings.d/interface.py >/dev/null << END_OF_INTERFACE
-BUILDROOT_WEB_LINK="$BUILDROOT_WEB_LINK"
+BUILDROOT_WEB_LINK="${BUILDROOT_WEB_LINK}"
 END_OF_INTERFACE
 
 # ensure app user can read all of this
