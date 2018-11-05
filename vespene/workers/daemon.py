@@ -10,6 +10,7 @@
 import time
 import traceback
 from datetime import datetime, timedelta
+import sys
 
 from django.db import transaction
 from django.utils import timezone
@@ -39,13 +40,16 @@ class Daemon(object):
 
     # -------------------------------------------------------------------------
 
-    def __init__(self, pool_name):
+    def __init__(self, pool_name, max_wait_minutes=-1, max_builds=-1):
         """
         Create a worker that serves just one queue.
         """
         self.pool = pool_name
+        self.max_wait_minutes = max_wait_minutes
+        self.build_counter = max_builds
         self.reload()     
         self.ready_to_serve = False
+        self.time_counter = datetime.now(tz=timezone.utc)
 
         LOG.info("serving queue: %s" % self.pool)
 
@@ -175,5 +179,20 @@ class Daemon(object):
 
         build = self.find_build()
         if build:
+            self.time_counter = datetime.now(tz=timezone.utc)
+
             LOG.debug("building: %d, project: %s" % (build.id, build.project.name))
             BuildLord(build).go()
+
+            self.build_counter = self.build_counter - 1
+            if self.build_counter == 0:
+                LOG.debug("requested max build count per worker limit reached, exiting")
+                sys.exit(0)
+
+        else:
+
+            now = datetime.now(tz=timezone.utc)
+            delta = now - self.time_counter
+            if (self.max_wait_minutes > 0) and (delta.total_seconds() * 60 > self.max_wait_minutes):
+                LOG.debug("no build has occured in %s minutes, exiting" % self.max_wait_minutes)
+                sys.exit(0)

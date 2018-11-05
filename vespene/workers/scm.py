@@ -7,7 +7,7 @@
 
 from vespene.common.logger import Logger
 from vespene.common.plugin_loader import PluginLoader
-
+from vespene.plugins.scm.none import Plugin as NoScmPlugin
 LOG = Logger()
 
 # =============================================================================
@@ -33,7 +33,7 @@ class ScmManager(object):
         plugins = self.plugin_loader.get_scm_plugins()
         plugin = plugins.get(self.scm_type)
         if plugin is None:
-            raise Exception("no scm plugin configurated for project scm type: %s" % self.scm_type)
+            plugin = NoScmPlugin()
         plugin.setup(self.build)
         return plugin
 

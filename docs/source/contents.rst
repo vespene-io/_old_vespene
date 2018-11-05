@@ -25,6 +25,7 @@
    Pipelines <pipelines>
    Scheduling <scheduling>
    Webhooks <webhooks>
+   Autoscaling <autoscaling>
 
 .. toctree::
    :caption: Admin

@@ -16,7 +16,8 @@ from django.conf import settings
 # first release ONLY, and some of these plugins, without a definition, mean Vespene
 # has no core behavior.
 
-REQUIRED_PLUGIN_KEYS = ( 'pre_triggers', 'success_triggers', 'failure_triggers', 'isolation', 'authorization', 'scm', 'variables', 'output', 'secrets', 'organizations' )
+REQUIRED_PLUGIN_KEYS = ( 'pre_triggers', 'success_triggers', 'failure_triggers', 'isolation', 'authorization', 'scm',
+    'variables', 'output', 'secrets', 'organizations', 'autoscaling_executors', 'autoscaling_planners')
 
 class PluginLoader(object):
 
@@ -79,11 +80,24 @@ class PluginLoader(object):
     def get_output_plugins(self):
         return self.generic_load('output', as_list=True)
 
+    def get_organization_plugins(self):
+        return self.generic_load('organizations')        
+
+    def get_autoscaling_planner_plugins(self):
+        return self.generic_load('autoscaling_planners')
+
+    def get_autoscaling_executor_plugins(self):
+        return self.generic_load('autoscaling_executors')
+
     def get_isolation_choices(self):
         return [ (x, x) for x in self.generic_load('isolation', just_names=True) ]
 
     def get_scm_choices(self):
         return [ (x, x) for x in self.generic_load('scm', just_names=True) ]
 
-    def get_organization_plugins(self):
-        return self.generic_load('organizations')        
+    def get_autoscaling_planner_choices(self):
+        return [ (x, x) for x in self.generic_load('autoscaling_planners', just_names=True) ]
+
+    def get_autoscaling_executor_choices(self):
+        return [ (x, x) for x in self.generic_load('autoscaling_executors', just_names=True) ]
+

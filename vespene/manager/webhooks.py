@@ -30,6 +30,11 @@ class Webhooks(object):
         is webhook enabled, it will create a QUEUED build for that project.
         """
 
+        # FIXME: at some point folks will want to support testing commits on branches
+        # not set on the project.  This is a good feature idea, and to do this we
+        # should add a webhooks_trigger_any_branch type option, that creates a build
+        # with any incoming branch specified. 
+
         qs = Project.objects.filter(webhook_enabled=True)
 
         possibles = []

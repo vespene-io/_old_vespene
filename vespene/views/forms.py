@@ -30,6 +30,8 @@ PLUGIN_LOADER = PluginLoader()
 ISOLATION_CHOICES = PLUGIN_LOADER.get_isolation_choices()
 SCM_CHOICES = PLUGIN_LOADER.get_scm_choices()
 ORGANIZATION_CHOICES = [['github','github']]
+PLANNER_CHOICES = PLUGIN_LOADER.get_autoscaling_planner_choices()
+EXECUTOR_CHOICES = PLUGIN_LOADER.get_autoscaling_executor_choices()
 
 class BaseForm(forms.ModelForm):
 
@@ -175,7 +177,7 @@ class BuildForm(BaseForm):
                 Tab('Info', 'project', 'status', 'revision', 'revision_username', 'queued_time', 'start_time', 'end_time', 'return_code'),
                 Tab('Script', 'script'),
                 Tab('Output', 'output', 'messages'),
-                Tab('Debug', 'worker', 'working_dir', 'variables', 'launch_answers', 'output_variables', 'pipeline_parent_build_id', 'pipeline_origin_build_id')
+                Tab('Debug', 'worker', 'working_dir', 'variables', 'launch_answers', 'output_variables', 'pipeline_parent_build_id', 'pipeline_origin_build_id', 'autoscale_dispatched')
             )
         )
 
@@ -267,10 +269,14 @@ class WorkerPoolForm(BaseForm):
     
     sudo_password = forms.CharField(widget=forms.PasswordInput(), required=False)
     isolation_method = forms.ChoiceField(choices=ISOLATION_CHOICES)
+    planner = forms.ChoiceField(choices=PLANNER_CHOICES)
+    executor = forms.ChoiceField(choices=EXECUTOR_CHOICES)
 
     class Meta:
         model = WorkerPool
-        fields = ('name', 'variables', 'variable_sets', 'isolation_method', 'sudo_user', 'sudo_password')
+        fields = ('name', 'variables', 'variable_sets', 'isolation_method', 'sudo_user', 'sudo_password',
+            'autoscaling_enabled', 'planner', 'executor', 'running_weight', 'queued_weight', 'excess', 'multiplier',
+            'minimum', 'maximum', 'executor_command', 'reevaluate_minutes')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -280,6 +286,7 @@ class WorkerPoolForm(BaseForm):
             TabHolder(
                 Tab('Info', 'name'),
                 Tab('Variables', 'variable_sets', 'variables'),
+                Tab('Autoscaling', 'autoscaling_enabled', 'planner', 'minimum', 'maximum', 'running_weight', 'queued_weight', 'excess', 'multiplier', 'reevaluate_minutes', 'executor', 'executor_command'),
                 Tab('Security', 'isolation_method', 'sudo_user', 'sudo_password')
             )
         )

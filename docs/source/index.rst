@@ -40,6 +40,8 @@ While not all automation tools are SSH-powered, many are. Vespene can memorize i
 
 Helping with the self-service magic, projects can ask interactive questions before they are launched with :ref:`launch_questions`, providing unprivileged users a simple interface to invoke specific tasks without needing full shell access. These questions can be drop-downs, multiple choice, or fill in the blank.
 
+Vespene also contains pluggable :ref:`autoscaling` technology, easily backed by tools such as AWS CloudFormation and Terraform - so you can always have exactly the right amount of build resources available and cut down on cloud costs.
+
 Pipelines
 =========
 

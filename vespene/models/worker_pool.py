@@ -14,6 +14,9 @@ from django.db import models
 from vespene.common.secrets import SecretsManager
 from vespene.models import BaseModel
 
+WP_SUCCESS = "SUCCESS"
+WP_FAILURE = "FAILURE"
+
 secrets = SecretsManager()
 
 class WorkerPool(models.Model, BaseModel):
@@ -30,16 +33,32 @@ class WorkerPool(models.Model, BaseModel):
 
     isolation_method = models.CharField(blank=False, max_length=50)
     sudo_user = models.CharField(max_length=100, blank=True, null=True)
-    # FIXME: SECURITY: use the secrets manager code on this as well.
     sudo_password = models.CharField(max_length=1024, blank=True, null=True)
     permissions_hex = models.CharField(max_length=5, default="0x777", null=False, blank=False, help_text="permissions for build directory")
 
     sleep_seconds = models.IntegerField(default=10, blank=False, null=False, help_text="how often workers should scan for builds")
     auto_abort_minutes = models.IntegerField(default=24*60, blank=False, null=False, help_text="auto-abort queued builds after this amount of time in queue")
     build_latest = models.BooleanField(default=True, null=False, help_text="auto-abort duplicate older builds?")
+    
+    # autoscaling
+    autoscaling_enabled = models.BooleanField(default=False, blank=True)
+    planner = models.CharField(max_length=512, blank=True, null=True)
+    running_weight = models.FloatField(default=1.0, blank=True, null=False)
+    queued_weight = models.FloatField(default=1.0, blank=True, null=False)
+    excess = models.IntegerField(default=0, blank=True, null=False)
+    multiplier = models.FloatField(default=1.0, blank=True, null=False)
+    minimum = models.IntegerField(default=0, blank=True, null=False)
+    maximum = models.IntegerField(default=10, blank=True, null=False)
+    executor = models.CharField(max_length=512, blank=True, null=True)
+    executor_command = models.CharField(max_length=1024, blank=True, null=False, default="")
+    last_autoscaled = models.DateTimeField(null=True, blank=True)
+    autoscaling_status = models.IntegerField(null=True, blank=True)
+    reevaluate_minutes = models.IntegerField(null=False, default=10, blank=True)
+
+    # FIXME: the python manage.py cleanup commands do *NOT* currently use these fields.
     build_object_shelf_life = models.IntegerField(default=365, blank=False, null=False, help_text="retain build objects for this many days")
     build_root_shelf_life = models.IntegerField(default=31, blank=False, null=False, help_text="retain build roots for this many days")
-      
+   
     created_by = models.ForeignKey(User, related_name='+', null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):

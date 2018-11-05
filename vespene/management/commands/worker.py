@@ -15,11 +15,16 @@ class Command(BaseCommand):
     help = 'Starts a daemon process for background jobs'
 
     def add_arguments(self, parser):
+        parser.add_argument('--max-builds', dest="max_builds", type=int, help='if set, terminate after this many builds', default=-1)
+        parser.add_argument('--max-wait-minutes', dest="max_wait_minutes", type=int, help="if set, terminate after this many minutes of no queued builds", default=-1)
+
         parser.add_argument('queue', type=str, help='name of the queue, use \'general\' for the unassigned queue')
 
     def handle(self, *args, **options):        
         queue = options['queue']
-        worker = Daemon(queue)
+        max_wait_minutes = options['max_wait_minutes']
+        max_builds = options['max_builds']
+        worker = Daemon(queue, max_builds=max_builds, max_wait_minutes=max_wait_minutes)
         worker.run()
 
         
