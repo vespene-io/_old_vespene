@@ -101,7 +101,6 @@ class BuildLord(object):
         # TODO: this isn't cross platform yet but is seemingly more reliable than 'os' functions on OS X
         # will need to detect the platform and make the appropriate changes for Windows.
         path = os.path.join(settings.BUILD_ROOT, str(self.build.id))
-        print("WORKING DIR=%s" % path)
         commands.execute_command(self.build, "mkdir -p %s" % path)
         commands.execute_command(self.build, "chmod 770 %s" % path)
         self.build.working_dir = path
