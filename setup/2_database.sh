@@ -9,6 +9,7 @@
 source ./0_common.sh
 
 # ---
+
 echo "installing packages ..."
 CONFIG=""
 PG_PREFIX=""
@@ -33,6 +34,7 @@ elif [[ "$DISTRO" == "MacOS" ]]; then
 fi
 
 # ---
+
 echo "initializing the database server..."
 
 if [[ "$DISTRO" == "archlinux" ]]; then
@@ -48,6 +50,7 @@ else
 fi
 
 # ----
+
 echo "configuring security at ${CONFIG} ..."
 
 # configure PostgreSQL security to allow the postgres account in locally, and allow
@@ -61,6 +64,8 @@ END_OF_CONF
 
 sudo chown $DB_USER $CONFIG
 
+# ---
+
 if [ "$DISTRO" == "redhat" ]; then
    echo "creating symbolic links to libraries..."
    sudo ln -s /opt/rh/rh-postgresql10/root/usr/lib64/libpq.so.rh-postgresql10-5 /usr/lib64/libpq.so.rh-postgresql10-5
@@ -68,8 +73,8 @@ if [ "$DISTRO" == "redhat" ]; then
 fi
 
 # ---
-echo "starting postgresql..."
 
+echo "starting postgresql..."
 if [ "$OSTYPE" == "linux-gnu" ]; then
     if [ "$DISTRO" == "redhat" ]; then  
         # run from software collections
@@ -83,6 +88,7 @@ elif [ "$DISTRO" == "MacOS" ]; then
 fi
 
 # --
+
 echo "creating the vespene database and user..."
 echo "  (if you any errors from 'cd' here or further down they can be ignored)"
 
@@ -96,6 +102,7 @@ else
 fi
 
 # --
+
 echo "granting access..."
 # give the user access and set their password
 $POST_SUDO ${PG_PREFIX}psql -d vespene -c "GRANT ALL on DATABASE vespene TO vespene"

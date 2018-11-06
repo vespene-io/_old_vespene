@@ -15,6 +15,7 @@
 source ./0_common.sh
 
 # ---
+
 # generate the supervisor configuration
 
 echo "generating supervisor config..."
@@ -24,6 +25,7 @@ echo "creating init script..."
 sudo chown -R $APP_USER /etc/vespene/
 
 # --
+
 # bail if on a Mac
 if [ "$DISTRO" == "MacOS" ]; then
    echo "launch supervisor with: supervisord -n c /etc/vespene/supervisord.conf"
@@ -32,6 +34,7 @@ fi
 
 
 # ---
+
 # generate systemd init script
 
 sudo tee /etc/systemd/system/vespene.service >/dev/null <<END_OF_SYSTEMD
@@ -53,10 +56,10 @@ User=${APP_USER}
 WantedBy=multi-user.target
 END_OF_SYSTEMD
 
+#---
+
 echo "starting the service..."
-# start the service
 sudo systemctl daemon-reload
 sudo systemctl start vespene.service
 sudo systemctl enable vespene.service
-
 echo "Vespene is now running on port 8000"

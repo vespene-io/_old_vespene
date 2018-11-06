@@ -11,6 +11,8 @@
 # load common settings
 source ./0_common.sh
 
+#---
+
 # run the custom management command that creates the objects
 cd /opt/vespene
 $APP_SUDO $PYTHON manage.py tutorial_setup
