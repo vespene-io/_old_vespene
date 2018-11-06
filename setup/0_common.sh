@@ -14,7 +14,9 @@ DBPASS="vespene!"
 
 # options to feed to gunicorn in /etc/vespene/supervisord.conf
 # if you change this to 0.0.0.0 to bind to all addresses be
-# sure to set up SSL
+# sure to set up SSL. This will run as non-root so chose
+# a non-privileged port if adjusting the default. Proxying
+# with NGINX or Apache later is also an option.
 
 GUNICORN_OPTS="--bind 127.0.0.1:8000"
 
