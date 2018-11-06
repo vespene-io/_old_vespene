@@ -44,6 +44,7 @@ class Project(models.Model, BaseModel):
     description = models.TextField(blank=True)
     repo_url = models.CharField(max_length=1024, help_text="ex: git@github.com:your_username/your_repo.git", blank=True)
     repo_branch = models.CharField(max_length=255, help_text="default: master", blank=True, null=False, default="")
+    recursive = models.BooleanField(null=False, blank=True, default=True)
 
     scm_type = models.CharField(null=False, max_length=30)
     webhook_enabled = models.BooleanField(default=False)

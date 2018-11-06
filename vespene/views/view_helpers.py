@@ -23,7 +23,7 @@ from vespene.version import VERSION
 from vespene.manager import Shared
 from vespene.common.logger import Logger
 from vespene.models.build import (ABORTED, ABORTING, FAILURE, QUEUED, RUNNING,
-                                  SUCCESS, UNKNOWN)
+                                  SUCCESS, UNKNOWN, ORPHANED)
 from vespene.manager.permissions import PermissionsManager
 from vespene.common.templates import template as common_template
 
@@ -321,6 +321,8 @@ def build_status_icon(build, compact=False, include_buildroot_link=False):
             ic = icon('fa-stopwatch', 'text-info', tooltip='Queued')
         elif status == ABORTING:
             ic = icon('fa-ban', 'text-info', tooltip='Aborting')
+        elif status == ORPHANED:
+            ic = icon('fa-stop-circle', 'text-info', tooltip='Orphaned')
         else:
             ic = "(status=%s, if you see this, it is a bug)" % status
         if not compact:

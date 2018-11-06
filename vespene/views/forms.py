@@ -25,7 +25,6 @@ from django.db.models import Q
 from crispy_forms.bootstrap import TabHolder, Tab
 from crispy_forms.layout import Layout
 from crispy_forms.helper import FormHelper
-import html
 
 PLUGIN_LOADER = PluginLoader()
 ISOLATION_CHOICES = PLUGIN_LOADER.get_isolation_choices()
@@ -92,7 +91,7 @@ class ProjectForm(BaseForm):
     class Meta:
         model = Project
         fields = ('name', 'description', 'pipeline', 'pipeline_enabled', 'stage', 'script', 'timeout', 'variables', 
-            'scm_type', 'repo_url', 'repo_branch', 'scm_login', 'ssh_keys', 
+            'scm_type', 'repo_url', 'repo_branch', 'recursive', 'scm_login', 'ssh_keys', 
             'owner_groups', 'variable_sets', 'worker_pool', 'webhook_enabled', 'webhook_token',
             'container_base_image', 'launch_questions', 'launch_groups',
             'schedule_enabled','monday','tuesday','wednesday','thursday','friday',
@@ -113,7 +112,7 @@ class ProjectForm(BaseForm):
             TabHolder(
                 Tab('Info', 'name', 'description'),
                 Tab('Script', 'script', 'timeout', 'container_base_image'),
-                Tab('Repository', 'scm_type', 'repo_url', 'repo_branch', 'scm_login', 'webhook_enabled', 'webhook_token'),
+                Tab('Repository', 'scm_type', 'repo_url', 'repo_branch', 'recursive', 'scm_login', 'webhook_enabled', 'webhook_token'),
                 Tab('Schedule', 'schedule_enabled','monday','tuesday','wednesday','thursday','friday',
                     'saturday','sunday','weekday_start_hours','weekday_start_minutes','weekend_start_hours',
                     'weekend_start_minutes','schedule_threshold'),
