@@ -18,6 +18,10 @@ if [ "$DISTRO" == "redhat" ]; then
     source scl_source enable rh-postgresql10
 END_OF_PG10
     sudo chmod +x /etc/profile.d/enable_pg10.sh 
+elif [ "$DISTRO" == "opensuse" ]; then
+    zypper refresh
+    zypper install -y gcc python python-pip python3 python3-pip python3-setuptools postgresql
+    python2.7 -m pip install supervisor
 elif [ "$DISTRO" == "ubuntu" ]; then
     sudo apt-add-repository universe
     sudo apt-get update

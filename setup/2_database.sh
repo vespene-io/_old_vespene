@@ -18,6 +18,10 @@ if [[ "$DISTRO" == "redhat" ]]; then
    # use software collections
    PG_PREFIX="/opt/rh/rh-postgresql10/root/usr/bin/"
    CONFIG="/var/opt/rh/rh-postgresql10/lib/pgsql/data/pg_hba.conf"
+   sudo yum -y install postgresql-server
+elif [[ "$DISTRO" == "opensuse" ]]; then
+   zypper install -y postgresql-server postgresql-contrib
+   CONFIG="/var/lib/pgsql/data/pg_hba.conf"
 elif [[ "$DISTRO" == "ubuntu" ]]; then
    sudo apt install -y postgresql postgresql-contrib
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"
@@ -37,6 +41,8 @@ elif [[ "$DISTRO" == "MacOS" ]]; then
     initdb /usr/local/var/postgres
 elif [[ "$DISTRO" == "redhat" ]]; then
     sudo -u postgres ${PG_PREFIX}postgresql-setup initdb
+elif [[ "$DISTRO" == "opensuse" ]]; then
+    sudo -u postgres initdb -D '/var/lib/pgsql/data/'
 else
     echo "initdb should not be needed on this platform"
 fi
@@ -63,6 +69,7 @@ fi
 
 # ---
 echo "starting postgresql..."
+
 if [ "$OSTYPE" == "linux-gnu" ]; then
     if [ "$DISTRO" == "redhat" ]; then  
         # run from software collections
