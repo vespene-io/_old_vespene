@@ -1,6 +1,7 @@
 #  Copyright 2018, Michael DeHaan LLC
 #  License: Apache License Version 2.0 + Commons Clause
 
+import html
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, HttpResponseServerError
 from django.shortcuts import get_object_or_404
@@ -55,16 +56,16 @@ class BuildView(BaseView):
     @classmethod
     def revision_column(cls, obj):
         # display the revision from source code if associated from a repo
-        return guard_none(obj.revision)
-        
+        return html.escape(guard_none(obj.revision))
+
     @classmethod
     def revision_username(cls, obj):
-        return guard_none(obj.revision_username)
+        return html.escape(guard_none(obj.revision_username))
 
     @classmethod
     def start_column(cls, obj):
         # when did this build start?
-        return format_time(obj.start_time)
+        return html.escape(format_time(obj.start_time))
 
     @classmethod
     def end_column(cls, obj):
@@ -81,7 +82,7 @@ class BuildView(BaseView):
         # link to the project detail page for this build
         project = obj.project
         if project:
-            return link("/ui/projects/%s/detail" % project.id, project.name)
+            return link("/ui/projects/%s/detail" % project.id, html.escape(project.name))
         return "import"
 
     @classmethod
@@ -119,7 +120,7 @@ class BuildView(BaseView):
     @classmethod
     def pool_column(cls, obj):
         pool = obj.worker_pool
-        return link("/ui/worker_pools/%s/detail" % pool.id, pool.name)
+        return link("/ui/worker_pools/%s/detail" % pool.id, html.escape(pool.name))
 
 
 BuildView.extra_columns = [

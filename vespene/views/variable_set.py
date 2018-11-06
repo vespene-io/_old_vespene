@@ -5,6 +5,7 @@
 from vespene.views import forms
 from vespene.models.variable_set import VariableSet
 from vespene.views import BaseView
+import html
 
 class VariableSetView(BaseView):
     model = VariableSet
@@ -21,7 +22,7 @@ class VariableSetView(BaseView):
 
     @classmethod
     def description_column(cls, obj):
-        return obj.description
+        return html.escape(obj.description)
 
 VariableSetView.extra_columns = [ 
     ('Description', VariableSetView.description_column)

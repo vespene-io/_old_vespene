@@ -25,6 +25,7 @@ from django.db.models import Q
 from crispy_forms.bootstrap import TabHolder, Tab
 from crispy_forms.layout import Layout
 from crispy_forms.helper import FormHelper
+import html
 
 PLUGIN_LOADER = PluginLoader()
 ISOLATION_CHOICES = PLUGIN_LOADER.get_isolation_choices()

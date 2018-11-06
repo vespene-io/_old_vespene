@@ -3,6 +3,7 @@
 
 import json
 import traceback
+import html
 from django.shortcuts import get_object_or_404, redirect
 from django.http.response import HttpResponse, HttpResponseServerError
 from vespene.views import forms
@@ -78,7 +79,7 @@ class ProjectView(BaseView):
         if obj.stage is None:
             return "-"
         my_link = "/ui/stages/%s/detail" % obj.stage.pk
-        return link(my_link, obj.stage.name)
+        return link(my_link, html.escape(obj.stage.name))
 
     @classmethod
     def project_start_prompt(cls, request, *args, **kwargs):

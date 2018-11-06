@@ -4,6 +4,7 @@
 from vespene.views import forms
 from vespene.models.snippet import Snippet
 from vespene.views import BaseView
+import html
 
 class SnippetView(BaseView):
     model = Snippet
@@ -20,7 +21,7 @@ class SnippetView(BaseView):
 
     @classmethod
     def description_column(cls, obj):
-        return obj.description
+        return html.escape(obj.description)
 
 SnippetView.extra_columns = [ 
     ('Description', SnippetView.description_column)

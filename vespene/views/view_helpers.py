@@ -9,6 +9,7 @@
 
 from urllib.parse import parse_qs
 import traceback
+import html
 
 from django.conf import settings
 from django.contrib import messages

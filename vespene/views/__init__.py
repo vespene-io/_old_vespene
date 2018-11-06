@@ -7,6 +7,7 @@
 
 import traceback
 from urllib.parse import parse_qs
+import html
 
 from django.http import HttpResponse, HttpResponseServerError
 from django.shortcuts import redirect
@@ -100,6 +101,10 @@ class BaseView(object):
         that the objects will now show up in a list view. The default behavior is to not filter anything.
         """
         return queryset
+
+    @classmethod
+    def escaped_name(cls, obj):
+        return html.escape(cls.name_cell(obj))
 
     @classmethod
     def name_cell(cls, obj):
