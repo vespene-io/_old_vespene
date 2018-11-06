@@ -54,6 +54,7 @@ Install automation is provided for the following platforms:
 * Ubuntu LTS distributions
 * CentOS 7 or RHEL 7
 * Arch Linux
+* openSUSE
 * OS X
 
 Automation for other install types are being added frequently.

@@ -59,6 +59,7 @@ The setup scripts currently support:
 * Ubuntu Bionic Beaver (18.04)
 * CentOS 7 (using software collections)
 * Arch Linux
+* openSUSE
 * OS X (via homebrew)
 
 If you are unsure of what platform to use or do not have a preference, Ubuntu Bionic Beaver (for production or development)  and OS X (for trying things out or development) are suggested.
