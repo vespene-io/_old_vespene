@@ -123,6 +123,10 @@ with your choices. There are some defaults that ship with the application (like 
 setup process, and you'll want to read up on those later once you have things working. You'll get Vespene with a minimal plugin
 configuration that should work for learning the tool, but that you might want to customize later.
 
+Please take note that Gunicorn will have trouble binding to a port < 1024 without running as root.  This is due to a design choice in the
+host operating systems.  It is recommended to run as a non-root user, so a port higher than 1024 (which can be bound by any user) is
+recommended for this case.
+
 Unless you wish to re-run these scripts, you won't be editing this setup script again.
 
 Software Dependency Setup
