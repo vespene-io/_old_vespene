@@ -15,7 +15,7 @@ in source code and not have to go into the build system to set them up or change
 With the "organizations" feature, Vespene can automatically pull in repository definitions from all of your GitHub (or in the future, other...) organizations.
 You can keep your build scripts 100% in source control, but still use the full power of Vespene templating and variables and snippets within them.
 
-Right now, this only works for GitHub organizations (including GitHub enterprise), and this feature will likely be expanded over time to support different source control vendors (such as GitLab) and more configuration flexibility.
+Right now, this only works for GitHub organizations (including GitHub enterprise), and this feature will likely be expanded over time to support different source control vendors (such as GitLab) and more configuration flexibility.  Most of the code is generic, and small plugins deal with APIs to the particular repo indexes.
 
 UI Configuration
 ----------------
@@ -78,10 +78,28 @@ Here is an example::
    launch_questions: []
    worker_pool: 'general'
    pipeline: 'finance'
-   stage: 'development'
+   pipeline_definition: [ 'build', 'qa', 'release' ]
+   stage: 'build'
    ownership_groups: [ 'dev', 'qa' ]
    launch_questions: [ ]
    launch_groups: [ 'support' ]
+
+What do each of these do?
+
+* name - defines the name of the project
+* script - this file is read to become the build script.  This is a path relative to the repo root
+* timeout - the build will fail if it takes longer than this many number of seconds
+* container_base_image - for container isolated builds, this sets the build environment
+* repo_branch - this is the repo to be checked out by default when building the project
+* webhook_enabled - enables :ref:`webhooks`
+* variables - see :ref:`variables`
+* launch_questions - see :ref:`launch_questions`
+* worker_pool - this is the worker pool that will be used to build the project
+* pipeline - the name of the pipeline. Can be created if it doesn't exist depending on organization settings.
+* pipeline_definition - the stages in the pipeline. Be careful that all projects sharing the pipeline use the same settings.
+* stage - the stage in the pipeline where this project runs
+* ownership_groups - who has permission to edit or delete the project? See :ref:`authz`
+* launch_groups - who has permission to launch/build the project? See :ref:`authz`
 
 If any value is not set, it will assume the Vespene defaults.  There are no required parameters.
 The project will use the repository name if not set.
@@ -109,7 +127,9 @@ Enforcing Limitations on Change
 
 In the Vespene UI, it is possible to limit whether projects are allowed to rename themselves, whether they can overwrite the build
 script once loaded into Vespene, and whether they can overwrite other configuration parameters.  In most cases, you can leave
-all of these controls ON if you trust developers.
+all of these controls ON if you trust developers. The most dangerous setting is perhaps "allow_pipeline_definition", which can be
+used to create pipelines if they do not exist, or reorder or reassign their stages, as this could effect the build cycles
+of other projects.
 
 If you are supremely concerned about those with access to source control making unwanted changes, you can choose to not set up
 organizations in Vespene, or use them once and then delete the organization.

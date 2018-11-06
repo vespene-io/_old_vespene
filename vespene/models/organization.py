@@ -39,6 +39,7 @@ class Organization(models.Model, BaseModel):
     overwrite_project_name = models.BooleanField(default=True)
     overwrite_project_script = models.BooleanField(default=True)
     overwrite_configurations = models.BooleanField(default=True)
+    allow_pipeline_definition = models.BooleanField(default=True)
     allow_worker_pool_assignment = models.BooleanField(default=True)
     auto_attach_ssh_keys = models.ManyToManyField('SshKey', related_name='+', blank=True, help_text="SSH keys to be assigned to imported projects")
     default_worker_pool = models.ForeignKey('WorkerPool', related_name='+', null=False, on_delete=models.PROTECT)

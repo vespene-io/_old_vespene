@@ -247,6 +247,46 @@ class ImportManager(object):
             obj = objs.first()
             setattr(project, attribute, obj)
 
+        def stage_manage(pipeline, pipeline_stage_names, stage_number):
+            """
+            Given a pipeline object and a list of stage names, configure
+            the pipeline at a given stage slot to point to that stage, 
+            creating that stage if it does not yet exist. If less than a full
+            list of stages are supplied, the remaining slots will be set
+            to None.
+            """
+            index = stage_number - 1
+            if len(pipeline_stage_names) < stage_number:
+                stage = None
+            else:
+                name = pipeline_stage_names[index]
+                stages = Stage.objects.filter(name=name)
+                if stages.exists():
+                    stage = stages.first()
+                else:
+                    stage = Stage(name=name)
+                    stage.save()
+            attribute = "stage%s" % stage_number
+            setattr(pipeline, attribute, stage)
+
+        def pipeline_manage(pipeline_name, pipeline_stages):
+            """
+            Given a pipeline name and a list of stages, create the pipeline if it does
+            not exist, and then assign each stage to match
+            """
+            pipelines = Pipeline.objects.filter(name=pipeline_name)
+            pipeline = None
+            if pipelines.exists():
+                pipeline = pipelines.first()
+            else:
+                pipeline = Pipeline(
+                    name = pipeline_name,
+                    enabled = True
+                )
+                for stage_number in range(1, 7):
+                    stage_manage(pipeline, pipeline_stages, stage_number)
+                pipeline.save()
+
         # --------------------------------------------------
         # apply the config file settings, using defaults if needed
 
@@ -264,12 +304,6 @@ class ImportManager(object):
             else:
                 self.log(build, "build script as referenced in .vespene is missing: %s" % script)
         
-
-        # bookmark:
-        # what should we do with script setting if no .vespene?
-        #elif org.overwrite_project_script and not project.script:
-        #    project.script = "#!/bin/bash\necho \"build script not configured\""
-
         if org.allow_worker_pool_assignment:
             fk_manage('worker_pool', WorkerPool)
 
@@ -279,6 +313,12 @@ class ImportManager(object):
                 attr_manage(attribute)
 
         project.save()
+
+        if org.allow_pipeline_definition:
+            value = config.get('pipeline_definition', None)
+            pipeline = config.get('pipeline', None)
+            if value and pipeline:
+                pipeline_manage(pipeline, value)
 
         if org.overwrite_configurations:
             # the permissions controls in the Organization object for these managers could be split

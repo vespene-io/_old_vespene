@@ -25,14 +25,12 @@ class Pipeline(models.Model, BaseModel):
         db_table = 'pipelines'
         indexes = [
             models.Index(fields=['name'], name='pipeline_name_idx'),
-            models.Index(fields=['group_name'], name='pipeline_group_name_idx'),
         ]
 
     name = models.CharField(unique=True, max_length=512)
     description = models.TextField(blank=True)
 
     enabled = models.BooleanField(default=True)
-    group_name = models.CharField(blank=False, null=False, max_length=512)
     last_completed_date = models.DateTimeField(null=True, blank=True)
     last_completed_by = models.ForeignKey('Build', related_name='completes_pipeline', on_delete=models.SET_NULL, null=True, blank=True)
 

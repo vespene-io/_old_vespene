@@ -138,7 +138,7 @@ class OrganizationForm(BaseForm):
         model = Organization
         fields = ('name', 'organization_type', 'description', 'organization_identifier', 'api_endpoint', 'import_enabled', 'import_without_dotfile', 'default_worker_pool', 
         'refresh_minutes', 'force_rescan', 'scm_login', 'worker_pool', 'created_by',
-        'overwrite_project_name', 'overwrite_project_script', 'overwrite_configurations', 'allow_worker_pool_assignment', 'auto_attach_ssh_keys')
+        'overwrite_project_name', 'overwrite_project_script', 'overwrite_configurations', 'allow_worker_pool_assignment', 'allow_pipeline_definition', 'auto_attach_ssh_keys')
         widgets = {}
 
     def __init__(self, *args, **kwargs):
@@ -149,7 +149,7 @@ class OrganizationForm(BaseForm):
                 Tab('Info', 'name', 'description'),
                 Tab('Import Configuration', 'organization_type', 'organization_identifier', 'api_endpoint', 'scm_login', 'import_enabled', 'refresh_minutes', 'force_rescan'),
                 Tab('Import Rules', 'import_without_dotfile', 'default_worker_pool', 'overwrite_project_name', 'overwrite_project_script', 'overwrite_configurations',
-                'allow_worker_pool_assignment', 'auto_attach_ssh_keys'),
+                'allow_worker_pool_assignment', 'allow_pipeline_definition', 'auto_attach_ssh_keys'),
                 Tab('Environment', 'worker_pool')
             )
         )
