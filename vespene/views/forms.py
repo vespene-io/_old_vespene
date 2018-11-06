@@ -181,7 +181,7 @@ class BuildForm(BaseForm):
                 Tab('Info', 'project', 'status', 'revision', 'revision_username', 'queued_time', 'start_time', 'end_time', 'return_code'),
                 Tab('Script', 'script'),
                 Tab('Output', 'output', 'messages'),
-                Tab('Debug', 'worker', 'working_dir', 'variables', 'launch_answers', 'output_variables', 'pipeline_parent_build_id', 'pipeline_origin_build_id', 'autoscale_dispatched')
+                Tab('Debug', 'worker', 'working_dir', 'variables', 'launch_answers', 'output_variables', 'pipeline_parent_build_id', 'pipeline_origin_build_id')
             )
         )
 
