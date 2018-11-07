@@ -77,11 +77,8 @@ class SshAgentManager(object):
         expect "Identity added*"
         interact
         """ % (keyfile, passphrase)
-        # FIMXE: REMOVE THIS!!!
         fh.write(script)
         fh.close()
-        LOG.debug(fname)
-        LOG.debug(keyfile)
         commands.execute_command(self.build, "/usr/bin/expect -f %s" % fname, output_log=False, message_log=False)
         os.remove(fname)
         return fname
