@@ -35,8 +35,6 @@ class Webhooks(object):
         # should add a webhooks_trigger_any_branch type option, that creates a build
         # with any incoming branch specified. 
 
-        qs = Project.objects.filter(webhook_enabled=True)
-
         possibles = []
 
         # this fuzzy code looks for what may come in for webhook JSON for GitHub and GitLab
@@ -49,8 +47,8 @@ class Webhooks(object):
                         possibles.append(repo)
 
         # find projects that match repos we have detected
-        qs = Project.objects.filter(webhook_enabled=True, repo_url__in=possibles).all()
-        for project in qs.all():
+        qs = Project.objects.filter(webhook_enabled=True, repo_url__in=possibles)
+        for project in qs:
             if project.webhook_token is None or project.webhook_token == self.token:
                 LOG.info("webhook starting project: %s" % project.id)
                 if project.repo_branch is not None:
