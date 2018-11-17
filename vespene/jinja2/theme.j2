@@ -47,9 +47,13 @@ $(document).ready(function(){
 <li><a class="{% if object_label == 'SSH Key' %}active{% endif %}" href="/ui/ssh_keys">SSH Keys</a></li>
 <li><a class="{% if object_label == 'Organization' %}active{% endif %}" href="/ui/organizations">Organizations</a></li>
 <li><a class="{% if object_label == 'Worker Pool' %}active{% endif %}" href="/ui/worker_pools">Worker Pools</a></li>
-<li><a class="{% if object_label == 'User' %}active{% endif %}" href="/ui/users">Users</a></li>
-<li><a class="{% if object_label == 'Group' %}active{% endif %}" href="/ui/groups">Groups</a></li>
 
+{% if settings.ALLOW_UI_USER_CREATION %}
+<li><a class="{% if object_label == 'User' %}active{% endif %}" href="/ui/users">Users</a></li>
+{% endif %}
+{% if settings.ALLOW_UI_GROUP_CREATION %}
+<li><a class="{% if object_label == 'Group' %}active{% endif %}" href="/ui/groups">Groups</a></li>
+{% endif %}
 
 {% if user and not user.is_anonymous %}
 <li><a class="" href="{{ url('logout') }}?next=/login">[Logout {{ user.username }}]</a></li>

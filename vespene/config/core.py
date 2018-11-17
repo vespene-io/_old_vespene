@@ -5,10 +5,10 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY INFO: these next two keys are NOT used in production, run 
-# 'make secrets' and this will generate a 
+# SECURITY INFO: these next two keys are NOT used in production, run
+# 'make secrets' and this will generate a
 # /etc/vespene/settings.d/security.py file to replace them. Read
-# the online security docs for more info 
+# the online security docs for more info
 
 SECRET_KEY = 'y1#h2iphta7==wf_9&!f4j%hrs@1kwc*nxe8-!ikfo$uyc7n$)'
 
@@ -60,7 +60,10 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
-            'environment' : 'vespene.common.templates.environment'
+            'environment' : 'vespene.common.templates.environment',
+            'context_processors' : [
+                'django_settings_export.settings_export'
+            ]
         },
     },
     {
@@ -106,3 +109,11 @@ LOG_LEVEL='DEBUG'
 # like ".example.com"
 
 ALLOWED_HOSTS = [ '*' ]
+
+ALLOW_UI_USER_CREATION = True
+ALLOW_UI_GROUP_CREATION = True
+
+SETTINGS_EXPORT = [
+    'ALLOW_UI_USER_CREATION',
+    'ALLOW_UI_GROUP_CREATION'
+]
