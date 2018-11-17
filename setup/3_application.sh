@@ -53,8 +53,8 @@ END_OF_INTERFACE
 
 #---
 
-# ldap settings
-sudo tee /etc/vespene/settings.d/ldap.py >/dev/null << END_OF_LDAP
+# authentication settings
+sudo tee /etc/vespene/settings.d/authentication.py >/dev/null << END_OF_AUTHENTICATION
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
@@ -67,7 +67,7 @@ AUTHENTICATION_BACKENDS = (
     #'django_auth_ldap.backend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend'
 )
-END_OF_LDAP
+END_OF_AUTHENTICATION
 
 #---
 
