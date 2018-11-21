@@ -75,6 +75,13 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
       PYTHON="/usr/bin/python"
       PIP="/usr/bin/pip"
    fi
+elif [[ "$OSTYPE" == "linux-musl" ]]; then
+    if [ -f /etc/alpine-release ]; then
+      echo "detected Alpine Linux"
+      DISTRO="alpine"
+      PYTHON="/usr/bin/python3"
+      PIP="/usr/bin/pip3"
+    fi
 elif [ -f /usr/local/bin/brew ]; then
       echo "detected MacOS"
       DISTRO="MacOS"

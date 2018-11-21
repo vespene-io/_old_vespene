@@ -29,6 +29,9 @@ elif [[ "$DISTRO" == "ubuntu" ]]; then
 elif [[ "$DISTRO" == "archlinux" ]]; then
    sudo pacman --noconfirm -Sy postgresql
    CONFIG="/var/lib/postgres/data/pg_hba.conf"
+elif [[ "$DISTRO" == "alpine" ]]; then
+   sudo apk add postgresql-contrib
+   CONFIG="/var/lib/postgresql/data/pg_hba.conf"
 elif [[ "$DISTRO" == "MacOS" ]]; then
    CONFIG="/usr/local/var/postgres/pg_hba.conf"
 fi
@@ -45,6 +48,8 @@ elif [[ "$DISTRO" == "redhat" ]]; then
     sudo -u postgres ${PG_PREFIX}postgresql-setup initdb
 elif [[ "$DISTRO" == "opensuse" ]]; then
     sudo -u postgres initdb -D '/var/lib/pgsql/data/'
+elif [[ "$DISTRO" == "alpine" ]]; then
+    sudo -u postgres initdb -D '/var/lib/postgresql/data'
 else
     echo "initdb should not be needed on this platform"
 fi
@@ -83,6 +88,9 @@ if [ "$OSTYPE" == "linux-gnu" ]; then
         sudo systemctl enable postgresql.service
         sudo systemctl start postgresql.service
     fi
+elif [ "$DISTRO" == "alpine" ]; then
+    sudo rc-update add postgresql
+    sudo rc-service postgresql start
 elif [ "$DISTRO" == "MacOS" ]; then
     /usr/local/bin/pg_ctl restart -D /usr/local/var/postgres/
 fi

@@ -30,6 +30,9 @@ sudo chown -R $APP_USER /etc/vespene/
 if [ "$DISTRO" == "MacOS" ]; then
    echo "launch supervisor with: supervisord -n c /etc/vespene/supervisord.conf"
    exit 0
+elif [ "$DISTRO" == "alpine" ]; then
+   echo "launch supervisor with: supervisord -n -c /etc/vespene/supervisord.conf"
+   exit 0
 fi
 
 
@@ -42,7 +45,6 @@ sudo tee /etc/systemd/system/vespene.service >/dev/null <<END_OF_SYSTEMD
 Description=Vespene Services
 Documentation=http://vespene.io
 After=postgresql.service
-
 [Service]
 ExecStart=/usr/bin/supervisord -n -c /etc/vespene/supervisord.conf
 ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
@@ -51,7 +53,6 @@ KillMode=process
 Restart=on-failure
 RestartSec=50s
 User=${APP_USER}
-
 [Install]
 WantedBy=multi-user.target
 END_OF_SYSTEMD
