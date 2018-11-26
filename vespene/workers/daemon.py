@@ -101,7 +101,7 @@ class Daemon(object):
                 return Build.objects.get(pk=self.build_id)
             except Build.DoesNotExist:
                 LOG.debug("no build with id %s, exiting" % str(self.build_id))
-                sys.exit(0)
+                sys.exit(1)
         else:
             # try to run any build queued in the last interval <default: 1 hour>, abort all other builds 
             threshold = datetime.now(tz=timezone.utc) - timedelta(minutes=self.pool_obj.auto_abort_minutes)
