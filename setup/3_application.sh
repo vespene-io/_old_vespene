@@ -55,13 +55,24 @@ END_OF_INTERFACE
 
 # authentication settings
 sudo tee /etc/vespene/settings.d/authentication.py >/dev/null << END_OF_AUTHENTICATION
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
+# Vespene uses the standard Django authentication system
+# the default authentication scheme uses the local database. to use LDAP:
+#
+# pip install python-ldap
+# pip install django-auth-ldap
+# 
+# and uncomment these lines:
+#
+# import ldap
+# from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
-# ldap settings for django-auth-ldap;
-# example: https://django-auth-ldap.readthedocs.io/en/latest/example.html
-# to enable LDAP authentication, django_auth_ldap.backend.LDAPBackend must be uncommented from AUTHENTICATION_BACKENDS.
-# to use LDAP exclusively, comment django.contrib.auth.backends.ModelBackend from AUTHENTICATION_BACKENDS.
+# then configure LDAP as follows:
+# see example: https://django-auth-ldap.readthedocs.io/en/latest/example.html
+#
+# to enable LDAP authentication, uncomment django_auth_ldap.backend.LDAPBackend from AUTHENTICATION_BACKENDS.
+# to use LDAP exclusively, comment out django.contrib.auth.backends.ModelBackend
+#
+# See also http://docs.vespene.io/authz.html
 
 AUTHENTICATION_BACKENDS = (
     #'django_auth_ldap.backend.LDAPBackend',
