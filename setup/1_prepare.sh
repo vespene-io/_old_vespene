@@ -13,7 +13,7 @@ if [ "$DISTRO" == "redhat" ]; then
     # on Red Hat
     # sudo yum-config-manager --enable rhel-server-rhscl-7-rpms ?
     sudo yum -y install epel-release
-    sudo yum -y install gcc python36 python36-devel supervisor rh-postgresql10
+    sudo yum -y install gcc python36 python36-devel supervisor rh-postgresql10 openldap-devel
     sudo python36 -m ensurepip
     sudo tee /etc/profile.d/enable_pg10.sh >/dev/null << END_OF_PG10
     #!/bin/bash

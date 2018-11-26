@@ -4,6 +4,8 @@
 from vespene.views import forms
 from django.contrib.auth.models import Group
 from vespene.views import BaseView
+from django.conf import settings
+from django.core.exceptions import PermissionDenied
 
 class GroupView(BaseView):
     model = Group
@@ -16,12 +18,15 @@ class GroupView(BaseView):
 
     @classmethod
     def get_queryset(cls, request):
-        return Group.objects
+        if settings.ALLOW_UI_GROUP_CREATION:
+            return Group.objects
+        else:
+            raise PermissionDenied
 
     #@classmethod
     #def description_column(cls, obj):
     #    return obj.description
 
-GroupView.extra_columns = [ 
+GroupView.extra_columns = [
     #('Description', SnippetView.description_column)
 ]

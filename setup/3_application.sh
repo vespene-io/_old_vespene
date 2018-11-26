@@ -53,6 +53,24 @@ END_OF_INTERFACE
 
 #---
 
+# authentication settings
+sudo tee /etc/vespene/settings.d/authentication.py >/dev/null << END_OF_AUTHENTICATION
+import ldap
+from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
+
+# ldap settings for django-auth-ldap;
+# example: https://django-auth-ldap.readthedocs.io/en/latest/example.html
+# to enable LDAP authentication, django_auth_ldap.backend.LDAPBackend must be uncommented from AUTHENTICATION_BACKENDS.
+# to use LDAP exclusively, comment django.contrib.auth.backends.ModelBackend from AUTHENTICATION_BACKENDS.
+
+AUTHENTICATION_BACKENDS = (
+    #'django_auth_ldap.backend.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend'
+)
+END_OF_AUTHENTICATION
+
+#---
+
 # ensure app user can read all of this
 echo sudo chown -R $APP_USER /etc/vespene
 
@@ -63,4 +81,3 @@ echo sudo chown -R $APP_USER /etc/vespene
 # it more than once. You also need this step during upgrades.
 cd /opt/vespene
 $APP_SUDO $PYTHON manage.py migrate
-
