@@ -17,6 +17,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('--max-builds', dest="max_builds", type=int, help='if set, terminate after this many builds', default=-1)
         parser.add_argument('--max-wait-minutes', dest="max_wait_minutes", type=int, help="if set, terminate after this many minutes of no queued builds", default=-1)
+        parser.add_argument( '--build-id', dest="build_id", type=int, help='run only this one build ID then exit', default=-1)
 
         parser.add_argument('queue', type=str, help='name of the queue, use \'general\' for the unassigned queue')
 
@@ -24,7 +25,11 @@ class Command(BaseCommand):
         queue = options['queue']
         max_wait_minutes = options['max_wait_minutes']
         max_builds = options['max_builds']
-        worker = Daemon(queue, max_builds=max_builds, max_wait_minutes=max_wait_minutes)
+        build_id = options['build_id']
+        worker = Daemon(queue,
+                        max_builds=max_builds,
+                        max_wait_minutes=max_wait_minutes,
+                        build_id=build_id)
         worker.run()
 
         

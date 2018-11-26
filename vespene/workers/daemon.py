@@ -40,7 +40,7 @@ class Daemon(object):
 
     # -------------------------------------------------------------------------
 
-    def __init__(self, pool_name, max_wait_minutes=-1, max_builds=-1):
+    def __init__(self, pool_name, max_wait_minutes=-1, max_builds=-1, build_id=-1):
         """
         Create a worker that serves just one queue.
         """
@@ -50,6 +50,15 @@ class Daemon(object):
         self.reload()     
         self.ready_to_serve = False
         self.time_counter = datetime.now(tz=timezone.utc)
+
+        if build_id >= 0:
+            # If worker is started for one specific build,
+            # we don't wait and only process one build.
+            self.max_wait_minutes = -1
+            self.build_counter = 1
+            self.build_id = build_id
+        else:
+            self.build_id = None
 
         LOG.info("serving queue: %s" % self.pool)
 
@@ -85,28 +94,35 @@ class Daemon(object):
 
     # -------------------------------------------------------------------------
 
-    def find_build(self):
+    def find_build(self, build_id=None):
 
-        # try to run any build queued in the last interval <default: 1 hour>, abort all other builds 
-        threshold = datetime.now(tz=timezone.utc) - timedelta(minutes=self.pool_obj.auto_abort_minutes)
-        builds = Build.objects.filter(
-            status = QUEUED,
-            worker_pool__name = self.pool,
-            queued_time__gt = threshold
-        )
-        count = builds.count() 
-        if count == 0:
-            return None
-        first = builds.order_by('id').first()
-
-        with transaction.atomic():
+        if build_id is not None:
             try:
-                first = Build.objects.select_for_update(nowait=True).get(id=first.pk)
-            except DatabaseError:
+                return Build.objects.get(pk=self.build_id)
+            except Build.DoesNotExist:
+                LOG.debug("no build with id %s, exiting" % str(self.build_id))
+                sys.exit(0)
+        else:
+            # try to run any build queued in the last interval <default: 1 hour>, abort all other builds 
+            threshold = datetime.now(tz=timezone.utc) - timedelta(minutes=self.pool_obj.auto_abort_minutes)
+            builds = Build.objects.filter(
+                status = QUEUED,
+                worker_pool__name = self.pool,
+                queued_time__gt = threshold
+            )
+            count = builds.count() 
+            if count == 0:
                 return None
-            if count > 1 and self.pool_obj.build_latest:
-                self.cleanup_extra_builds(first)
-            return first
+            first = builds.order_by('id').first()
+
+            with transaction.atomic():
+                try:
+                    first = Build.objects.select_for_update(nowait=True).get(id=first.pk)
+                except DatabaseError:
+                    return None
+                if count > 1 and self.pool_obj.build_latest:
+                    self.cleanup_extra_builds(first)
+                return first
 
     # -------------------------------------------------------------------------
 
@@ -177,7 +193,8 @@ class Daemon(object):
         self.cleanup_orphaned_builds()
         self.schedule_builds()
 
-        build = self.find_build()
+        build = self.find_build(build_id=self.build_id)
+
         if build:
             self.time_counter = datetime.now(tz=timezone.utc)
 
