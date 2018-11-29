@@ -102,7 +102,7 @@ Plugins technically can call other plugins, but avoid doing so, as it might make
 
 Change settings.py to include the plugin if it is to be included by default, but likely we'll need to describe the plugin on the plugins page either way if submitting it for inclusion in the main distribution. This is probably a discussion to be had on the pull request.
 
-If in doubt ask questions on the `forum <https://talk.vespene.io>`_, we'd be happy to help.
+If in doubt ask questions on the `forum <https://talk.msphere.io>`_, we'd be happy to help.
 
 Dynamic Imports
 ---------------

@@ -8,7 +8,7 @@
 FAQ/Troubleshooting
 *******************
 
-If you encounter problems, you can always stop by `talk.vespene.io <http://talk.vespene.io>` to get help,
+If you encounter problems, you can always stop by `talk.msphere.io <http://talk.msphere.io>` to get help,
 but try the following things first.
 
 My build takes a long time to execute / hangs
@@ -170,7 +170,7 @@ Is your roadmap public?
 We like to talk about good ideas all the time, but because a BETTER idea may come up tomorrow, we'd rather not release
 a roadmap that would appear like any kind of commitment.  We'd also probably move way faster than that roadmap anyway.
 
-Please join `talk.vespene.io <talk.vespene.io>` to talk about ideas!
+Please join `talk.msphere.io <talk.msphere.io>` to talk about ideas!
 
 I found a typo or grammar error in the docs
 -------------------------------------------

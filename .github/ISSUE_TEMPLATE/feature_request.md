@@ -8,6 +8,6 @@ Hi -
 
 We don't track feature requests in Github but would very much like to hear about your idea.
 
-Please stop by the forum at https://talk.vespene.io/c/ideas
+Please stop by the forum at https://talk.msphere.io/c/ideas
 
 Thanks!

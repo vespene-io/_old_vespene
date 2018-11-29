@@ -96,7 +96,7 @@ The build scripts are otherwise not really complex, so that's really the only re
 
 If the builds don't run at all (and stay in queued state), you probably don't have a worker pool running with the correct name.
 
-If you are still stuck, hop by the forum (talk.vespene.io) and we'll try to help you through it.
+If you are still stuck, hop by the forum (talk.msphere.io) and we'll try to help you through it.
 
 Intro: Logins & SSH
 -------------------

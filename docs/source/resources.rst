@@ -17,7 +17,7 @@ GitHub
 
 If you would like to get involved with Vespene at a code level, "fork" the project at github.com/vespene/vespene.
 
-Please use GitHub for pull requests and filing bug tickets, but use `the forum <talk.vespene.io>`_ for questions and ideas and discussion.
+Please use GitHub for pull requests and filing bug tickets, but use `the forum <talk.msphere.io>`_ for questions and ideas and discussion.
 
 It is usually better to talk about features a little bit before coding them up, unless it is a simple plugin.  
 
@@ -48,7 +48,7 @@ For news and announcements, hit the email signup link at `http://vespene.io <htt
 Forum
 -----
 
-The primary discussion forum for Vespene is `talk.vespene.io <http://talk.vespene.io>`_.
+The primary discussion forum for Vespene is `talk.msphere.io <http://talk.msphere.io>`_.
 
 
 

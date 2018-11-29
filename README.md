@@ -67,7 +67,7 @@ The setup guide is [here](http://docs.vespene.io/setup.html).
 Forum & GitHub
 ==============
 
-If you have an idea or question, we'd encourage you to join the forum at [talk.vespene.io](http://talk.vespene.io).
+If you have an idea or question, we'd encourage you to join the forum at [talk.msphere.io](http://talk.msphere.io).
 This is the best place to ask all questions about the project. 
 
 To keep things organized, the issue tracker is just for bug tickets and pull requests.

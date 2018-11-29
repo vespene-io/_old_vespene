@@ -195,6 +195,6 @@ We hope you find the autoscaling engine to be very flexible and very pluggable.
 If you are just getting Vespene started and learning how to use it, we first recommend you learn Vespene and make sure it is a tool for you, and that
 you are familiar with concepts. Try this feature *after* you are familiar with the basics and you should get along fine.  
 
-This feature is also very new in Vespene, so please stop by talk.vespene.io with any ideas, questions, or feedback!
+This feature is also very new in Vespene, so please stop by talk.msphere.io with any ideas, questions, or feedback!
 
 
