@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 # ---------------------------------------------------------------------------
 # models.py: base class of all DB models, some minor utility functions
 # models are smart objects that include behavior as well as representation

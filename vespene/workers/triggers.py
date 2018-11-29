@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  triggers.py - triggers are plugins that are run when certain things happen,
 #  like when a build starts, or stops successfully or unsuccessfully. Triggers

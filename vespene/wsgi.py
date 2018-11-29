@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  wsgi.py - standard wsgi entry point generated from Django. Not used if
 #  running the default webserver.

@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  secrets.py - uses plugins to symetrically encrypt/decrypt content
 #  in the database. All plugins in the configuration can be used to 

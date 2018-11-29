@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  snippets.py - this rather simple plugin makes snippets available to
 #  Jinja2 as variables. Snippet names containing "-" or " " aren't valid Python 

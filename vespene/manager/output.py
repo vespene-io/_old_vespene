@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  output.py - applies all output plugins to a message. Output plugins
 #  can be used to format build output or also redirect it to additional

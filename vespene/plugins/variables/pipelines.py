@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  pipelines.py - this logic allows the variables output (see web pipeline docs) in
 #  the build textual output to be used as input variables to future pipeline

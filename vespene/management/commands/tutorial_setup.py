@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # tutorial_setup.py - this is used manually or by the provided setup
 # scripts to create some basic objects in Vespene that new users can play

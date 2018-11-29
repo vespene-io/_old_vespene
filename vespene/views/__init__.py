@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  --------------------------------------------------------------------------
 #  __init__.py - common code for all view subclasses and a few top level
 #  view routes, which we want to minimize

@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  view_helpers.py - various reusable functions used to implement the
 #  main routes in views.py.  Most notably, the CRUD pages are mostly

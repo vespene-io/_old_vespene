@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  permissions.py - central point for all code to use to ask questions about
 #  what things are allowed.  Just returns yes/no, does not raise exceptions.

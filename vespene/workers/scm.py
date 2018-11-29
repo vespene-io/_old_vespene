@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  scm.py - encapsulates the logic of a SCM checkout. The implementation
 #  for various source control providers is contained in 'plugins/scm'.

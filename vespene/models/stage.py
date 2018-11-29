@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # stage.py - one of many steps of a CI/CD pipeline. See pipelines.py
 #---------------------------------------------------------------------------

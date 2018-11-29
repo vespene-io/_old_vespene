@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # snippet.py - snippets are large chunks of text that are available as
 # jinja2 variables, but are  unique in that they too are templated before

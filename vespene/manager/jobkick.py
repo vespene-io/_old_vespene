@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  jobkick.py - support functions for starting/stopping builds from the view
 #  side of the house.  All actual processing is handled by code in 'workers/'

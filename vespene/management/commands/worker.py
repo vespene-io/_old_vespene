@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # worker.py - this is the management command that starts worker processes
 # that work a given queue, and is typically involved by supervisor, configured

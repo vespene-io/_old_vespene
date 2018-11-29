@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  builder.py - the BuildLord class contains all the logic for running builds
 #  once they have been queued by jobkick.py (on the view side) and picked

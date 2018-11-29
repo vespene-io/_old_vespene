@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 # ---------------------------------------------------------------------------
 # database.py: database settings
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

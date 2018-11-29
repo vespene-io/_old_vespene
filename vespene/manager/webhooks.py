@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  webhooks.py - implementation of webhook support.  Right now this isn't
 #  pluggable and contains an implementation tested for GitHub and some

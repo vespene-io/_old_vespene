@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  daemon.py - this is the main entry point for each worker process. It
 #  doesn't fork. The build will periodically check to see if it is flagged

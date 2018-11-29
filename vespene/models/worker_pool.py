@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  ---------------------------------------------------------------------------
 #  worker_pool.py - worker pools are named queues with various proprerties.
 #  each project has one and only one worker pool and individual workers

@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  pipelines.py - pipelines are the logic Vespene uses to implement
 #  a "CI/CD" pipeline where one build can trigger another on success.

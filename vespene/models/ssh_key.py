@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # ssh_key.py - holds SSH private keys, with optional unlock passwords,
 # for use by SCM checkouts or SSH-based management of hosts when running

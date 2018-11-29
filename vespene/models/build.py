@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  --------------------------------------------------------------------------
 #  build.py - a build is an execution of a project, involving optionally
 #  a checkout, and a definite execution of a templated build script. It has

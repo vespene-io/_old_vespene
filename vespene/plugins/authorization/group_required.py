@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  group_required.py - a plugin to limit access to certain types of
 #  verbs on certain types of nouns to certain groups. See web 'authz'

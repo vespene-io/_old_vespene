@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  basic_container.py - this is a docker-cli based isolation strategy
 #  that runs builds as the result of a "docker build" command, and then

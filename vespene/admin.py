@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  admin.py - sets up the django administrative interface forms at
 #  http://yourserver.example.com/admin, which requires superuser access

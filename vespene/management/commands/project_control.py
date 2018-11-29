@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # project_control.py - CLI command that can start or stop projects.  This is 
 # mostly used for development testing and can be upgraded.

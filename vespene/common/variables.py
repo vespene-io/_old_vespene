@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  variables.py - this encapsulates calls to the various 'variables' plugins
 #  and is used to generate variables in 'vespene.json' (a file written into

@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  slack.py - this is a plugin that sends slack notifications when builds
 #  start or finish. It could easily be copied to add support for HipChat

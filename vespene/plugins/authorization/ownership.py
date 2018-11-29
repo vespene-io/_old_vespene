@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  ownership.py - this implements an AuthZ structure that allows users
 #  to create mostly everything, but only edit/delete objects that they

@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  basic.py - this is a cloaking plugin for symetric encryption of secrets.
 #  it's not intended to be a fortress but for the implementation to use

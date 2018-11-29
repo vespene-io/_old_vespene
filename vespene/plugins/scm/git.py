@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  git.py - code for working with git.  To avoid surprising API breakage
 #  and also to allow easier future features, this just runs the git CLI

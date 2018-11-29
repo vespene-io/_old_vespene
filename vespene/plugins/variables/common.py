@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  common.py - the way build scripts are templated (and also vespene.json in
 #  the build root) is templated is defined by plugins like these. 'common'

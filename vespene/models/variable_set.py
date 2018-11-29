@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #---------------------------------------------------------------------------
 # variable_set.py - a bucket of reusable variables that may be attached
 # to multiple objects, all sharing the same keys and values.

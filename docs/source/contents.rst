@@ -46,5 +46,4 @@
    Development Setup <development_setup>
    Development Guide <development_guide>
    FAQ / Troubleshooting <faq>
-   Partnership Program <partnership>
 

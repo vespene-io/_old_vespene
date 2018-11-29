@@ -1,5 +1,5 @@
 #  Copyright 2018, Michael DeHaan LLC
-#  License: Apache License Version 2.0 + Commons Clause
+#  License: Apache License Version 2.0
 #  -------------------------------------------------------------------------
 #  ssh_agent.py - Vespene workers are run wrapped by 'ssh-agent' processes
 #  and the workers can use SSH keys configured per project to do SCM checkouts
