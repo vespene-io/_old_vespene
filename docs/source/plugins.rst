@@ -187,10 +187,15 @@ This limitation might be removable with some code modifications and is something
 Isolation: sudo
 ---------------
 
-This plugin sudoes to the configured sudo user after jumping into the build root.
+This plugin sudo's to the configured sudo user after jumping into the build root.
 
 It is very important (see :ref:`security`)) that if using this isolation mode the specified sudo user can not read the database settings for the Vespene application.  It is also possible
 for build scripts in this build mode to read and write the contents of other build roots.
+
+The user you enter to sudo to should be a user like 'vespene_build', and the user running the build (usually 'vespene') should be able to sudo into that user without a password.  The sudoers
+configuration on the worker OS should look like the following:
+
+     vespene ALL=(vespene_build) NOPASSWD:ALL 
 
 Isolation: future
 -----------------

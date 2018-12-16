@@ -70,6 +70,11 @@ access.  In particular, during the setup process you probably generated secrets 
 These files are used to decrypt secrets in the database when using the basic encryption plugin that ships
 with Vespene.
 
+The user that is running Vespene worker processes (usually 'vespene') should have permission to sudo into the 
+processes user configured on the worker pool (usually 'vespene_build') with a configuration like this in sudoers:
+
+    vespene ALL=(vespene_build) NOPASSWD:ALL 
+
 No Multi-tenancy
 ----------------
 

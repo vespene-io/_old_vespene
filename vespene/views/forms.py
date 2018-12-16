@@ -271,14 +271,13 @@ class ServiceLoginForm(BaseForm):
 
 class WorkerPoolForm(BaseForm):
     
-    sudo_password = forms.CharField(widget=forms.PasswordInput(), required=False)
     isolation_method = forms.ChoiceField(choices=ISOLATION_CHOICES)
     planner = forms.ChoiceField(choices=PLANNER_CHOICES)
     executor = forms.ChoiceField(choices=EXECUTOR_CHOICES)
 
     class Meta:
         model = WorkerPool
-        fields = ('name', 'variables', 'variable_sets', 'isolation_method', 'sudo_user', 'sudo_password',
+        fields = ('name', 'variables', 'variable_sets', 'isolation_method', 'sudo_user',
             'autoscaling_enabled', 'planner', 'executor', 'running_weight', 'queued_weight', 'excess', 'multiplier',
             'minimum', 'maximum', 'executor_command', 'reevaluate_minutes')
 
@@ -291,7 +290,7 @@ class WorkerPoolForm(BaseForm):
                 Tab('Info', 'name'),
                 Tab('Variables', 'variable_sets', 'variables'),
                 Tab('Autoscaling', 'autoscaling_enabled', 'planner', 'minimum', 'maximum', 'running_weight', 'queued_weight', 'excess', 'multiplier', 'reevaluate_minutes', 'executor', 'executor_command'),
-                Tab('Security', 'isolation_method', 'sudo_user', 'sudo_password')
+                Tab('Security', 'isolation_method', 'sudo_user')
             )
         )
 

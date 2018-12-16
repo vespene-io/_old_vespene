@@ -22,7 +22,6 @@ class Plugin(object):
     def setup(self, build):
         self.build = build
         self.sudo_user = self._get_sudo_user()
-        self.sudo_password = self._get_sudo_password()
         self.chmod = self._get_chmod()
 
     def _get_script_file_name(self):
@@ -49,12 +48,6 @@ class Plugin(object):
             chmod = 0x777
         chmod = int(chmod, 16)
         return "%X" % chmod
-
-    def _get_sudo_password(self):
-        password = self.build.project.worker_pool.get_sudo_password()
-        if not password:
-            return ""
-        return password
 
     def begin(self):
 
@@ -87,6 +80,6 @@ class Plugin(object):
             timeout = "timeout %d " % (self.build.project.timeout * 60)
         else:
             timeout = ""
-        sudo_command = "echo \"%s\" | sudo -Snk -u %s %s%s" % (self.sudo_password, self.sudo_user, timeout, self.script_file_name)
+        sudo_command = "sudo -Snk -u %s %s%s" % (self.sudo_user, timeout, self.script_file_name)
         self.build.append_message("see 'Output'")
         commands.execute_command(self.build, sudo_command, log_command=False, output_log=True, message_log=False)

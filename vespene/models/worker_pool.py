@@ -30,7 +30,6 @@ class WorkerPool(models.Model, BaseModel):
 
     isolation_method = models.CharField(blank=False, max_length=50)
     sudo_user = models.CharField(max_length=100, blank=True, null=True)
-    sudo_password = models.CharField(max_length=1024, blank=True, null=True)
     permissions_hex = models.CharField(max_length=5, default="0x777", null=False, blank=False, help_text="permissions for build directory")
 
     sleep_seconds = models.IntegerField(default=10, blank=False, null=False, help_text="how often workers should scan for builds")
@@ -62,11 +61,7 @@ class WorkerPool(models.Model, BaseModel):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.sudo_password = secrets.cloak(self.sudo_password)
         super().save(*args, **kwargs)
-
-    def get_sudo_password(self):
-        return secrets.decloak(self.sudo_password)
 
     def as_dict(self):
         return dict(

@@ -120,7 +120,6 @@ class Command(BaseCommand):
             worker_pool, _ = WorkerPool.objects.get_or_create(
                 name='tutorial-pool',
                 sudo_user='nobody',
-                sudo_password='',
                 isolation_method='sudo',
                 variables="{}"
             )

@@ -75,9 +75,9 @@ If your workers are going to represent automation, rather than source code build
 Because the tutorial is just a basic setup, the "tutorial_setup" command created a worker pool named "tutorial-pool", and the :ref:`setup` instructions
 hopefully have a worker process running that will consume tutorial build requests.  You can check on this by looking at the supervisor configuration created in the /etc/vespene/ directory.
 
-Before you start a project though, you will need to first use the superuser account to edit the configuration for this worker pool.  A sudo_user and sudo_password are set up, and these
-may not be appropriate for your platform. Most likely they won't be! To ignore security for now,  you can just set these to the username running the Vespene worker, but you would
-never do this in production.
+Before you start a project though, you will need to first use the superuser account to edit the configuration for this worker pool.  A sudo_user is, and these
+*wont'* not be appropriate for your platform. To ignore security for now,  you can just set these to the username running the Vespene worker, but you would
+never do this in production. The sudoers configuration is explained in :ref:`security`.
 
 For instance, in a development setup on my Mac, I often "cheat" and just set the sudo username to my current username, and then no password is even required.  That's not secure though, hence
 why we don't want you to do that in production.  Remember to read the :ref:`security` instructions later.
