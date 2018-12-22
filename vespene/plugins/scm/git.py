@@ -81,7 +81,7 @@ class Plugin(object):
 
         try:
             # run it
-            cmd = "git clone %s%s %s%s %s-v" % (branch_spec, shlex.quote(self.repo), self.build.working_dir, recursive, ask_pass)
+            cmd = "git clone %s%s %s%s %s -v" % (branch_spec, shlex.quote(self.repo), self.build.working_dir, recursive, ask_pass)
             # we should be a BIT smarter than this, but for now use the timeout command to kill the build if the SSH
             # unlock password or something might be wrong. We can modifiy this later to have watch phrases
             # that kill the command automatically when we see certain output.
