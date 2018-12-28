@@ -20,6 +20,9 @@ if [[ "$DISTRO" == "redhat" ]]; then
    PG_PREFIX="/opt/rh/rh-postgresql10/root/usr/bin/"
    CONFIG="/var/opt/rh/rh-postgresql10/lib/pgsql/data/pg_hba.conf"
    sudo yum -y install postgresql-server
+elif [[ "$DISTRO" == "amazon2" ]]; then
+   sudo yum -y install postgresql-server
+   CONFIG="/var/lib/pgsql/data/pg_hba.conf"
 elif [[ "$DISTRO" == "opensuse" ]]; then
    zypper install -y postgresql-server postgresql-contrib
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
@@ -46,6 +49,8 @@ elif [[ "$DISTRO" == "MacOS" ]]; then
     initdb /usr/local/var/postgres
 elif [[ "$DISTRO" == "redhat" ]]; then
     sudo -u postgres ${PG_PREFIX}postgresql-setup initdb
+elif [[ "$DISTRO" == "amazon2" ]]; then
+    sudo -u postgres postgresql-setup --initdb --unit postgresql
 elif [[ "$DISTRO" == "opensuse" ]]; then
     sudo -u postgres initdb -D '/var/lib/pgsql/data/'
 elif [[ "$DISTRO" == "alpine" ]]; then
@@ -98,7 +103,7 @@ fi
 # --
 
 echo "creating the vespene database and user..."
-echo "  (if you any errors from 'cd' here or further down they can be ignored)"
+echo "  (if you see any errors from 'cd' here or further down they can be ignored)"
 
 EXISTS=`sudo -u $DB_USER ${PG_PREFIX}psql -lqt | grep vespene`
 if [ $? -eq 1 ]; then

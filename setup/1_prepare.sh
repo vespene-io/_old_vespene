@@ -20,6 +20,10 @@ if [ "$DISTRO" == "redhat" ]; then
     source scl_source enable rh-postgresql10
 END_OF_PG10
     sudo chmod +x /etc/profile.d/enable_pg10.sh 
+elif [ "$DISTRO" == "amazon2" ]; then
+    sudo amazon-linux-extras install -y python3 postgresql10
+    sudo yum -y install python2-pip
+    sudo python -m pip install supervisor
 elif [ "$DISTRO" == "opensuse" ]; then
     zypper refresh
     zypper install -y gcc python python-pip python3 python3-pip python3-setuptools postgresql
@@ -58,7 +62,7 @@ sudo mkdir -p /var/log/vespene/
 #---
 
 echo "Cloning the project into /opt/vespene..."
-rm -rf /opt/vespene/*
+sudo rm -rf /opt/vespene/*
 sudo cp -a ../* /opt/vespene
 
 #---

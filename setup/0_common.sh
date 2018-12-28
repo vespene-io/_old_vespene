@@ -35,8 +35,6 @@ BUILDROOT="/tmp/vespene"
 # worker pool name (configured in the Vespene UI) and the value is the number of copies 
 # of that worker to run. Increasing the number increases parallelism.
 
-DISTRO="?"
-
 # WORKER_CONFIG="general=2 tutorial-pool=1"
 WORKER_CONFIG="tutorial-pool=1"
 
@@ -53,10 +51,16 @@ DB_USER="postgres"
 APP_USER="vespene"
 
 # rough OS detection for now; patches accepted!
+DISTRO="?"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
    if [ -f /etc/redhat-release ]; then
       echo "detected RHEL/CentOS"
       DISTRO="redhat"
+      PIP="/usr/local/bin/pip3.6"
+      PYTHON="/usr/bin/python3.6"
+   elif [[ -f /etc/system-release && "$(cat /etc/system-release)" =~ "Amazon Linux release 2" ]]; then
+      echo "detected Amazon Linux 2"
+      DISTRO="amazon2"
       PIP="/usr/local/bin/pip3.6"
       PYTHON="/usr/bin/python3.6"
    elif [ -f /usr/bin/zypper ]; then
