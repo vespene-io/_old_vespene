@@ -20,6 +20,9 @@ if [ "$DISTRO" == "redhat" ]; then
     source scl_source enable rh-postgresql10
 END_OF_PG10
     sudo chmod +x /etc/profile.d/enable_pg10.sh 
+elif [ "$DISTRO" == "fedora" ]; then
+    sudo yum -y install gcc python3 python3-devel supervisor postgresql openldap-devel
+    python3 -m ensurepip
 elif [ "$DISTRO" == "amazon2" ]; then
     sudo amazon-linux-extras install -y python3 postgresql10
     sudo yum -y install python2-pip

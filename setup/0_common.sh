@@ -53,7 +53,12 @@ APP_USER="vespene"
 # rough OS detection for now; patches accepted!
 DISTRO="?"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-   if [ -f /etc/redhat-release ]; then
+   if [ -f /etc/fedora-release ]; then
+      echo "detected Fedora"
+      DISTRO="fedora"
+      PIP="/usr/bin/pip3"
+      PYTHON="/usr/bin/python3"
+   elif [ -f /etc/redhat-release ]; then
       echo "detected RHEL/CentOS"
       DISTRO="redhat"
       PIP="/usr/local/bin/pip3.6"
