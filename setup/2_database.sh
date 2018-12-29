@@ -33,6 +33,9 @@ elif [[ "$DISTRO" == "amazon" ]]; then
 elif [[ "$DISTRO" == "opensuse" ]]; then
    zypper install -y postgresql-server postgresql-contrib
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
+elif [[ "$DISTRO" == "debian" ]]; then
+   sudo apt install -y postgresql postgresql-contrib
+   CONFIG="/etc/postgresql/9.6/main/pg_hba.conf"
 elif [[ "$DISTRO" == "ubuntu" ]]; then
    sudo apt install -y postgresql postgresql-contrib
    CONFIG="/etc/postgresql/10/main/pg_hba.conf"

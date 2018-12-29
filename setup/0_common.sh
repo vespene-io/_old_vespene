@@ -79,10 +79,18 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
       PYTHON="/usr/bin/python3"
       PIP="/usr/bin/pip3"
    elif [ -f /usr/bin/apt ]; then
-      echo "detected Ubuntu/Debian"
-      DISTRO="ubuntu"
-      PYTHON="/usr/bin/python3"
-      PIP="/usr/bin/pip3"
+      OS=$(lsb_release -si)
+      if [ "$OS" == "Debian" ]; then
+         echo "detected Debian"
+         DISTRO="debian"
+         PYTHON="/usr/bin/python3"
+         PIP="/usr/bin/pip3"
+      elif [ "$OS" == "Ubuntu" ]; then
+         echo "detected Ubuntu"
+         DISTRO="ubuntu"
+         PYTHON="/usr/bin/python3"
+         PIP="/usr/bin/pip3"
+     fi
    elif [ -f /usr/bin/pacman ]; then
       echo "detected Arch Linux"
       DISTRO="archlinux"

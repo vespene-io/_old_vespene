@@ -40,6 +40,9 @@ elif [ "$DISTRO" == "ubuntu" ]; then
     sudo apt-add-repository universe
     sudo apt-get update
     sudo apt-get install -y gcc libssl-dev postgresql-client python3 python3-pip python3-setuptools supervisor
+elif [ "$DISTRO" == "debian" ]; then
+    sudo apt-get update
+    sudo apt-get install -y gcc libssl-dev postgresql-client postgresql-server-dev-all python3-dev python3 python3-pip python3-setuptools supervisor musl-dev libffi-dev
 elif [ "$DISTRO" == "archlinux" ]; then
     sudo pacman --noconfirm -Sy python python-pip python-setuptools postgresql supervisor sudo
 elif [ "$DISTRO" == "alpine" ]; then
