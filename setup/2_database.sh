@@ -26,6 +26,10 @@ elif [[ "$DISTRO" == "fedora" ]]; then
 elif [[ "$DISTRO" == "amazon2" ]]; then
    sudo yum -y install postgresql-server
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
+elif [[ "$DISTRO" == "amazon" ]]; then
+   PG_PREFIX="/usr/pgsql-10/bin/"
+   CONFIG="/var/lib/pgsql/10/data/pg_hba.conf"
+   sudo yum -y install postgresql10-server
 elif [[ "$DISTRO" == "opensuse" ]]; then
    zypper install -y postgresql-server postgresql-contrib
    CONFIG="/var/lib/pgsql/data/pg_hba.conf"
@@ -56,6 +60,8 @@ elif [[ "$DISTRO" == "fedora" ]]; then
     sudo -u postgres initdb -D '/var/lib/pgsql/data/'
 elif [[ "$DISTRO" == "amazon2" ]]; then
     sudo -u postgres postgresql-setup --initdb --unit postgresql
+elif [[ "$DISTRO" == "amazon" ]]; then
+    sudo -u postgres ${PG_PREFIX}initdb -D '/var/lib/pgsql/10/data'
 elif [[ "$DISTRO" == "opensuse" ]]; then
     sudo -u postgres initdb -D '/var/lib/pgsql/data/'
 elif [[ "$DISTRO" == "alpine" ]]; then
@@ -94,6 +100,9 @@ if [ "$OSTYPE" == "linux-gnu" ]; then
     if [ "$DISTRO" == "redhat" ]; then  
         # run from software collections
         sudo service rh-postgresql10-postgresql restart
+    elif [ "$DISTRO" == "amazon" ]; then
+        sudo service postgresql-10 restart
+        sudo chkconfig postgresql-10 on
     else
         sudo systemctl enable postgresql.service
         sudo systemctl start postgresql.service

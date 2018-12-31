@@ -68,6 +68,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
       DISTRO="amazon2"
       PIP="/usr/local/bin/pip3.6"
       PYTHON="/usr/bin/python3.6"
+   elif [[ -f /etc/system-release && "$(cat /etc/system-release)" =~ "Amazon Linux AMI release" ]]; then
+      echo "detected Amazon Linux"
+      PIP="/usr/bin/pip-3.6"
+      PYTHON="/usr/bin/python3.6"
+      DISTRO="amazon"
    elif [ -f /usr/bin/zypper ]; then
       echo "detected openSUSE"
       DISTRO="opensuse"

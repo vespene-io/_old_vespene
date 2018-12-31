@@ -26,12 +26,15 @@ sudo chown -R $APP_USER /etc/vespene/
 
 # --
 
-# bail if on a Mac
+# bail if on a system not supporting the systemd setup below
 if [ "$DISTRO" == "MacOS" ]; then
    echo "launch supervisor with: supervisord -n c /etc/vespene/supervisord.conf"
    exit 0
 elif [ "$DISTRO" == "alpine" ]; then
    echo "launch supervisor with: supervisord -n -c /etc/vespene/supervisord.conf"
+   exit 0
+elif [ "$DISTRO" == "amazon" ]; then
+   echo "launch supervisor with: sudo -u $APP_USER PATH=/usr/local/bin:\$PATH /usr/local/bin/supervisord -n -c /etc/vespene/supervisord.conf"
    exit 0
 fi
 

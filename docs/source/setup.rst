@@ -58,7 +58,7 @@ The setup scripts currently support:
 
 * Ubuntu Bionic Beaver (18.04)
 * Fedora
-* Amazon Linux 2
+* Amazon Linux/Amazon Linux 2
 * CentOS 7 (using Software Collections)
 * Arch Linux
 * openSUSE

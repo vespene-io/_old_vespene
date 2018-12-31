@@ -27,6 +27,11 @@ elif [ "$DISTRO" == "amazon2" ]; then
     sudo amazon-linux-extras install -y python3 postgresql10
     sudo yum -y install python2-pip
     sudo python -m pip install supervisor
+elif [[ "$DISTRO" == "amazon" ]]; then
+    sudo yum -y install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-6-x86_64/pgdg-redhat10-10-2.noarch.rpm
+    sudo sed -ie 's/rhel-\$releasever-\$basearch/rhel-6-x86_64/g' /etc/yum.repos.d/pgdg-10-redhat.repo
+    sudo yum -y install python36 postgresql10
+    sudo python -m pip install supervisor
 elif [ "$DISTRO" == "opensuse" ]; then
     zypper refresh
     zypper install -y gcc python python-pip python3 python3-pip python3-setuptools postgresql
