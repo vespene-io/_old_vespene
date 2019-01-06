@@ -54,7 +54,7 @@ class Plugin(object):
             # a file to retrieve the password
             if self.project.scm_login and self.project.scm_login.password is not None:
                 answer_file = commands.answer_file(self.project.scm_login.get_password())
-                ask_pass = " --config core.askpass=\"bash %s\"" % answer_file
+                ask_pass = " --config core.askpass=\"%s\"" % answer_file
             else:
                 # it's not set, we can avoid an error if it asks for a password and
                 # we have ALREADY added the username to the URL if we could, but if not
@@ -73,7 +73,7 @@ class Plugin(object):
 
         branch_spec = ""
         if self.project.repo_branch:
-            branch_spec = "-b %s --single-branch " % shlex.quote(self.project.repo_branch)
+            branch_spec = "--depth 1 -b %s --single-branch " % shlex.quote(self.project.repo_branch)
 
         recursive = ""
         if self.project.recursive:

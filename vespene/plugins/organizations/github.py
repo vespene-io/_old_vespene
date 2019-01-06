@@ -50,8 +50,7 @@ class Plugin(object):
 
         repo = self.fix_scm_url(repo, organization.scm_login.username)
         answer_file = commands.answer_file(organization.scm_login.get_password())
-        ask_pass = " --config core.askpass=\"bash %s\"" % answer_file
-        # TODO: add --depth 1 to git.py checkouts as well
+        ask_pass = " --config core.askpass=\"%s\"" % answer_file
         branch_spec = "--depth 1 --single-branch "
 
         clone_path = os.path.join(build.working_dir, str(count))

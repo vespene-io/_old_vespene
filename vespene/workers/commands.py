@@ -133,9 +133,11 @@ def execute_command(build, command, input_text=None, env=None, log_command=True,
     return out
         
 def answer_file(answer):
-    (_, fname) = tempfile.mkstemp()
+    (fd, fname) = tempfile.mkstemp()
     fh = open(fname, "w")
     fh.write("#!/bin/bash\n")
-    fh.write("echo %s" % answer);
+    fh.write("echo %s" % answer)
     fh.close()
+    os.close(fd)
+    os.chmod(fname, 0o700)
     return fname
