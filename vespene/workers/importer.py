@@ -12,6 +12,7 @@ import os
 import traceback
 import shutil
 import yaml
+import json
 
 from django.db import transaction
 from django.conf import settings
@@ -214,6 +215,8 @@ class ImportManager(object):
         def attr_manage(key):
             value = config.get(key, None)
             if value is not None:
+                if type(value) == dict:
+                    value = json.dumps(value)
                 setattr(project, key, value)
 
         def m2m_manage(attribute, model):

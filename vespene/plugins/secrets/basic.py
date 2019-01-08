@@ -24,7 +24,6 @@ class BasicV1(object):
 
     def cloak(self, msg):
         symetric = settings.SYMETRIC_SECRET_KEY
-        print("SYM=%s" % symetric)
         ff = fernet.Fernet(symetric)
         msg = msg.encode('utf-8')
         enc = ff.encrypt(msg)
